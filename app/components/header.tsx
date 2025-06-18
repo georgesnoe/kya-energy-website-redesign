@@ -2,7 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { LuMenu } from "react-icons/lu";
 
 export default function Header() {

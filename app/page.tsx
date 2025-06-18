@@ -13,11 +13,11 @@ export default function Home() {
           </div>
           <div className="space-y-8">
             <p className="font-bold text-6xl">Avec nos Groupes Électrosolaires <br /> <span className="text-green-700">KYA-Sol</span></p>
-            <p className="text-2xl text-gray-600">Devenez propriétaires d'une énergie verte et durable</p>
+            <p className="text-2xl text-gray-600">Devenez propriétaires d&apos;une énergie verte et durable</p>
           </div>
           <div className="flex items-center justify-start gap-2 text-xl">
             <p><LuCircleCheckBig color="green" fontWeight={900} /></p>
-            <p><span className="font-bold text-green-700">Notre vision</span>: démocratiser l'accès à l'énergie durable</p>
+            <p><span className="font-bold text-green-700">Notre vision</span>: démocratiser l&apos;accès à l&apos;énergie durable</p>
           </div>
           <div>
             <Link href="">
@@ -31,7 +31,7 @@ export default function Home() {
         <div className="w-full lg:w-1/2">
           <div className="p-4 bg-green-300 rounded-xl relative">
             <div className="overflow-hidden rounded-xl">
-              <img src="/kya-sop.avif" alt="/" className="w-full h-96 object-cover" />
+              <img src="/kya-sop.avif" alt="" className="w-full h-96 object-cover" />
             </div>
             <div className="absolute -top-6 -left-6 w-16 h-16 rounded-full bg-[#0f05] animate-ping"></div>
           </div>
