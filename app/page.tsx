@@ -196,7 +196,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-8" id="contact">
         <div className="container mx-auto px-4">
           <h1 className="text-center text-4xl font-bold w-full">Contactez-nous</h1>
           <div className="flex justify-center items-center my-4">
