@@ -6,8 +6,8 @@ import { useRef } from "react";
 import { RiInformation2Line } from "react-icons/ri";
 
 export default function Chatbot() {
-    let message = useRef<HTMLInputElement>(null);
-    let envoyer = useRef<HTMLButtonElement>(null);
+    const message = useRef<HTMLInputElement>(null);
+    const envoyer = useRef<HTMLButtonElement>(null);
 
     return (
         <>
@@ -50,10 +50,10 @@ export default function Chatbot() {
                             <div className="grid grid-cols-2 gap-2 mt-2">
                                 {
                                     ["C'est quoi l'énergie solaire ?", "Quels produits proposez vous ?", "Où se situe KYA-Energy Group ?", "Combien coûte un kit solaire ?"].map((value, index) => (
-                                        <div onClick={(e) => {
+                                        <div onClick={() => {
                                             message.current!.value = value;
                                             envoyer.current!.click();
-                                        }} key={value} style={{
+                                        }} key={index} style={{
                                             background: "linear-gradient(135deg, #10b981 0%, #059669 100%)"
                                         }} className="rounded-xl p-2 shadow bg-green-600 text-white cursor-pointer hover:scale-105 transition-all duration-300">
                                             <p className="mb-1"><RiInformation2Line /></p>
