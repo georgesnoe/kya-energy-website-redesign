@@ -1,4 +1,5 @@
 import { LuShield } from "react-icons/lu";
+import { RiFacebookLine, RiLinkedinLine, RiInstagramLine, RiTwitterLine, RiYoutubeLine, RiTiktokLine } from "react-icons/ri";
 import Link from "next/link";
 
 export default function Footer() {
@@ -87,8 +88,40 @@ export default function Footer() {
                     </div>
                 </div>
             </div>
-            <div className="container mx-auto px-4 py-8">
+            <div className="container mx-auto px-4 py-8 flex items-center justify-between gap-8">
                 <p>&copy; {new Date().getFullYear()} KYA-Energy Group. Tous droits réservés.</p>
+                <div className="flex items-center gap-4 justify-end w-max flex-wrap">
+                    <Link href="http://www.fb.com/kya-energy">
+                        <div className="font-bold text-2xl p-2 rounded-full bg-blue-900">
+                            <RiFacebookLine color="skyblue" />
+                        </div>
+                    </Link>
+                    <Link href="https://www.linkedin.com/company/kya-energy">
+                        <div className="font-bold text-2xl p-2 rounded-full bg-blue-900">
+                            <RiLinkedinLine color="skyblue" />
+                        </div>
+                    </Link>
+                    <Link href="https://www.instagram.com/kya_energy/">
+                        <div className="font-bold text-2xl p-2 rounded-full bg-pink-900">
+                            <RiInstagramLine color="pink" />
+                        </div>
+                    </Link>
+                    <Link href="https://twitter.com/kya_energy">
+                        <div className="font-bold text-2xl p-2 rounded-full bg-blue-900">
+                            <RiTwitterLine color="skyblue" />
+                        </div>
+                    </Link>
+                    <Link href="https://twitter.com/kya_energy">
+                        <div className="font-bold text-2xl p-2 rounded-full bg-red-900">
+                            <RiYoutubeLine color="red" />
+                        </div>
+                    </Link>
+                    <Link href="http://www.tiktok.com/@kyaenergy">
+                        <div className="font-bold text-2xl p-2 rounded-full bg-gray-900">
+                            <RiTiktokLine color="black" />
+                        </div>
+                    </Link>
+                </div>
             </div>
         </footer>
     );
