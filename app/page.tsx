@@ -15,7 +15,7 @@ export default function Home() {
               <p>Solutions énergétiques durables</p>
             </div>
             <div className="space-y-8">
-              <p className="font-bold text-6xl">Avec nos Groupes Électrosolaires <br /> <span className="text-green-700">KYA-Sol</span></p>
+              <p className="font-bold text-4xl md:text-6xl">Avec nos Groupes Électrosolaires <br /> <span className="text-green-700">KYA-Sol</span></p>
               <p className="text-2xl text-gray-600">Devenez propriétaires d&apos;une énergie verte et durable</p>
             </div>
             <div className="flex items-center justify-start gap-2 text-xl">
