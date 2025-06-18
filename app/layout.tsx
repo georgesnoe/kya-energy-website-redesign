@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Header from "@/app/components/header";
+import Footer from "@/app/components/footer";
 import "./globals.css";
 import { googleSansText } from "./lib/fonts";
 
@@ -19,7 +20,9 @@ export default function RootLayout({
         className={`${googleSansText.className} font-medium antialiased bg-gray-100 text-gray-800`}
       >
         <Header />
-        {children}
+        <main className="p-4">
+        </main>
+        <Footer />
       </body>
     </html>
   );
