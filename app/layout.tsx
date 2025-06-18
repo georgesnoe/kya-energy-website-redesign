@@ -5,8 +5,8 @@ import "./globals.css";
 import { googleSansText } from "./lib/fonts";
 
 export const metadata: Metadata = {
-  title: "🚀 Loft Secret",
-  description: "Une application web pour réserver des places pour des événements",
+  title: "KYA-Energy Group",
+  description: "Le site web de KYA-Energy Group",
 };
 
 export default function RootLayout({
