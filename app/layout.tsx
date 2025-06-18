@@ -14,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" className="text-[18px]">
       <body
         className={`${googleSansText.className} font-medium antialiased bg-gray-100 text-gray-900`}
       >
