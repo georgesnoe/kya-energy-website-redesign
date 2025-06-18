@@ -106,12 +106,12 @@ export default function Home() {
           <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
             {
               [
-                [<RiAwardLine color="green" />, "Certification ISO 9001:2015", "Qualité garantie selon les standards internationaux les plus exigeants."],
-                [<RiFlashlightLine color="green" />, "Solutions Innovantes", "Technologies de pointe pour une efficacité énergétique maximale."],
-                [<RiLeafLine color="green" />, "Impact environnemental", "Réduction significative de votre empreinte carbone."],
-                [<RiShieldLine color="green" />, "Fiabilité Prouvée", "Équipements durables avec garanties étendues."],
-                [<RiGroupLine color="green" />, "Accompagnement Complet", "De l'étude à la maintenance, nous vous accompagnons."],
-                [<RiGlobeLine color="green" />, "Vision Globale", "Contribution à un avenir énergétique durable pour tous."]
+                [<RiAwardLine color="green" key={0} />, "Certification ISO 9001:2015", "Qualité garantie selon les standards internationaux les plus exigeants."],
+                [<RiFlashlightLine color="green" key={1} />, "Solutions Innovantes", "Technologies de pointe pour une efficacité énergétique maximale."],
+                [<RiLeafLine color="green" key={2} />, "Impact environnemental", "Réduction significative de votre empreinte carbone."],
+                [<RiShieldLine color="green" key={3} />, "Fiabilité Prouvée", "Équipements durables avec garanties étendues."],
+                [<RiGroupLine color="green" key={4} />, "Accompagnement Complet", "De l'étude à la maintenance, nous vous accompagnons."],
+                [<RiGlobeLine color="green" key={5} />, "Vision Globale", "Contribution à un avenir énergétique durable pour tous."]
 
               ].map((value, index) => (
                 <div key={index} className="space-y-4 bg-white p-8 rounded-xl shadow">
