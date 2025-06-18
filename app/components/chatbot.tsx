@@ -6,7 +6,7 @@ export default function Chatbot() {
         <>
             {/* Notification d'information */}
             <div id="info" className="fade-in-up">
-                <p>Je suis un bot personnalisé, n&apos;hésitez pas à me poser des questions</p>
+                <p>Je suis le bot de KYA-Energy Group, n&apos;hésitez pas à me poser des questions</p>
                 <button id="info-close">
                     <svg viewBox="0 0 16 16">
                         <path
