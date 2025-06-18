@@ -174,7 +174,7 @@ export default function Home() {
                     <img className="w-full h-64 object-contain" src={`${value[0]}`} alt="" />
                   </div>
                   <p className="font-bold text-xl">{value[1]}</p>
-                  <p className="text-sm">{value[2]}</p>
+                  <p>{value[2]}</p>
                   <div className="space-y-4">
                     {[...value[3]].map((_value, _index) => (
                       <div key={_index} className="flex items-center gap-2">
