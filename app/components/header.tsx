@@ -40,13 +40,13 @@ export default function Header() {
                                     </li>
                                 ))
                             }
-                            <li className="w-max">
+                            <li className="w-max xl:hidden">
                                 <Link href="/politique-qualite"
                                     className="hover:text-green-500">
                                     Politique qualité
                                 </Link>
                             </li>
-                            <li className="w-max">
+                            <li className="w-max xl:hidden">
                                 <Link href="#contact"
                                     className="hover:text-green-500">
                                     Contact
