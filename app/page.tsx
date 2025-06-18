@@ -155,7 +155,7 @@ export default function Home() {
 
       <div className="mb-32">
         <div className="container mx-auto px-4">
-          <div className="px-48">
+          <div className="px-4 lg:px-48">
             <h1 className="text-center text-4xl font-bold w-full">Nos solutions KYA-Sol</h1>
             <div className="flex justify-center items-center my-4">
               <div className="h-1 w-32 bg-green-300"></div>
