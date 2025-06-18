@@ -17,10 +17,11 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${googleSansText.className} font-medium antialiased bg-gray-100 text-gray-800`}
+        className={`${googleSansText.className} font-medium antialiased bg-gray-100 text-gray-800 min-h-screen`}
       >
         <Header />
         <main className="p-4">
+          {children}
         </main>
         <Footer />
       </body>

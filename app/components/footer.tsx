@@ -1,4 +1,5 @@
 import { LuShield } from "react-icons/lu";
+import Link from "next/link";
 
 export default function Footer() {
     return (
@@ -35,7 +36,7 @@ export default function Footer() {
                                         ["Conseil", "#"]
                                     ].map((value, index) => (
                                         <li key={index}>
-                                            <a href={value[1]} className="hover:text-green-400">{value[0]}</a>
+                                            <Link href={value[1]} className="hover:text-green-400">{value[0]}</Link>
                                         </li>
                                     ))
                                 }
@@ -56,7 +57,7 @@ export default function Footer() {
                                         ["Fondation KYA", "#"]
                                     ].map((value, index) => (
                                         <li key={index}>
-                                            <a href={value[1]} className="hover:text-green-400">{value[0]}</a>
+                                            <Link href={value[1]} className="hover:text-green-400">{value[0]}</Link>
                                         </li>
                                     ))
                                 }
@@ -77,7 +78,7 @@ export default function Footer() {
                                         ["Politique qualité", "#"]
                                     ].map((value, index) => (
                                         <li key={index}>
-                                            <a href={value[1]} className="hover:text-green-400">{value[0]}</a>
+                                            <Link href={value[1]} className="hover:text-green-400">{value[0]}</Link>
                                         </li>
                                     ))
                                 }
