@@ -20,7 +20,7 @@ export default function RootLayout({
         className={`${googleSansText.className} font-medium antialiased bg-gray-100 text-gray-800 min-h-screen`}
       >
         <Header />
-        <main className="p-4">
+        <main className="py-4">
           {children}
         </main>
         <Footer />
