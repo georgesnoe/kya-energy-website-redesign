@@ -19,7 +19,7 @@ export default function Header() {
                 </div>
 
                 {/* Liens utiles */}
-                <div className={`${showMenu == true ? "" : "hidden"} bg-white p-4 rounded absolute top-20 right-0 xl:static xl:block`}>
+                <div className={`${showMenu == true ? "" : "hidden"} bg-white p-4 rounded absolute top-20 right-0 xl:static xl:block z-50`}>
                     <nav>
                         <ul className="flex items-start xl:items-center gap-4 flex-col xl:flex-row">
                             {
