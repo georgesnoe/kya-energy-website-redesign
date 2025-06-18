@@ -169,7 +169,7 @@ export default function Home() {
                 ["/kya-sop-commercial.avif", "KYA-Sol Commercial", "Systèmes haute performance pour entreprises et industries.", ["Haute capacité", "Monitoring avancé", "ROI optimisé"], "#"],
                 ["/kya-sop-communautaire.avif", "KYA-Sol Communautaire", "Projets d'envergure pour collectivités et institutions.", ["Solutions sur mesure", "Financement flexible", "Impact social"], "#"]
               ].map((value, index) => (
-                <div key={index} className="p-4 rounded-xl bg-white space-y-8">
+                <div key={index} className="p-4 rounded-xl bg-white space-y-8 flex flex-col justify-between">
                   <div className="h-64">
                     <img className="w-full h-64 object-contain" src={`${value[0]}`} alt="" />
                   </div>
