@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
+import Chatbot from "@/app/components/chatbot";
 import "./globals.css";
 import { googleSansText } from "./lib/fonts";
 
@@ -24,6 +25,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <Chatbot />
       </body>
     </html>
   );
