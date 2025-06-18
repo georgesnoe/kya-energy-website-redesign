@@ -40,14 +40,26 @@ export default function Header() {
                                     </li>
                                 ))
                             }
+                            <li className="w-max">
+                                <Link href="/politique-qualite"
+                                    className="hover:text-green-500">
+                                    Politique qualité
+                                </Link>
+                            </li>
+                            <li className="w-max">
+                                <Link href="#contact"
+                                    className="hover:text-green-500">
+                                    Contact
+                                </Link>
+                            </li>
                         </ul>
                     </nav>
                 </div>
 
                 {/* Boutons utiles */}
                 <div className="flex items-center gap-4">
-                    <a href="/politique-qualite" className="text-sm border-2 rounded w-max p-2 border-gray-400 font-bold hover:bg-gray-400 hover:text-white transition-colors duration-300">Politique Qualité</a>
-                    <a href="#contact" className="scroll-smooth text-sm border rounded w-max p-2 border-green-500 bg-green-500 hover:bg-green-700 hover:border-green-700 text-white font-bold transition-colors duration-300">Contact</a>
+                    <a href="/politique-qualite" className="hidden xl:inline text-sm border-2 rounded w-max p-2 border-gray-400 font-bold hover:bg-gray-400 hover:text-white transition-colors duration-300">Politique Qualité</a>
+                    <a href="#contact" className="hidden xl:inline scroll-smooth text-sm border rounded w-max p-2 border-green-500 bg-green-500 hover:bg-green-700 hover:border-green-700 text-white font-bold transition-colors duration-300">Contact</a>
                     {/* Bouton hamburger */}
                     <div className="xl:hidden flex items-center">
                         <button onClick={() => { setShowMenu(!showMenu); document.getElementById(pathname.slice(1))?.focus() }} onBlur={() => setShowMenu(!showMenu)}>
