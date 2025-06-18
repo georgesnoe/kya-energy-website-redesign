@@ -43,7 +43,7 @@ export default function Home() {
 
 
         {/* Mission et valeurs */}
-        <div className="my-8">
+        <div className="my-32">
           <div>
             <h1 className="text-center text-4xl font-bold w-full">Mission et valeurs</h1>
             <div className="flex justify-center items-center mt-4">
@@ -96,7 +96,7 @@ export default function Home() {
         </div>
 
         {/* Pourquoi choisir Kya ? */}
-        <div className="flex flex-col gap-8 my-8">
+        <div className="flex flex-col gap-8 my-32">
           <div>
             <h1 className="text-center text-4xl font-bold w-full">Pourquoi choisir KYA-Energy Group ?</h1>
             <div className="flex justify-center items-center mt-4">
@@ -134,7 +134,7 @@ export default function Home() {
       </div>
 
 
-      <div className="bg-green-700 text-white py-32 my-16">
+      <div className="bg-green-700 text-white py-32 my-32">
         <div className="container mx-auto px-4 grid grid-cols-2 lg:grid-cols-4 gap-16">
           {
             [
