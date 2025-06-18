@@ -72,7 +72,7 @@ export default function Home() {
                     <p className="text-2xl">Nos valeurs</p>
                   </h1>
                   <div>
-                    <ul className="grid grid-cols-2 space-y-2">
+                    <ul className="grid grid-cols-1 md:grid-cols-2 space-y-2">
                       {
                         ["Professionnalisme", "Rigueur", "Esprit d'équipe", "Ecoute du client", "Intégrité", "Transparence", "Equité", "Innovation"].map((value, index) => (
                           <li key={index}>
