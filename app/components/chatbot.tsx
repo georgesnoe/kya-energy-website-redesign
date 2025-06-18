@@ -1,7 +1,14 @@
+"use client";
+
 import "./chatbot.css";
 import Script from "next/script";
+import { useRef } from "react";
+import { RiInformation2Line } from "react-icons/ri";
 
 export default function Chatbot() {
+    let message = useRef<HTMLInputElement>(null);
+    let envoyer = useRef<HTMLButtonElement>(null);
+
     return (
         <>
             {/* Notification d'information */}
@@ -37,7 +44,26 @@ export default function Chatbot() {
                 </div>
 
                 <div className="messages-container">
-                    <div id="historique"></div>
+                    <div id="historique">
+                        <div>
+                            <p className="text-center font-bold">Comment puis-je vous servir ?</p>
+                            <div className="grid grid-cols-2 gap-2 mt-2">
+                                {
+                                    ["C'est quoi l'énergie solaire ?", "Quels produits proposez vous ?", "Où se situe KYA-Energy Group ?", "Combien coûte un kit solaire ?"].map((value, index) => (
+                                        <div onClick={(e) => {
+                                            message.current!.value = value;
+                                            envoyer.current!.click();
+                                        }} key={value} style={{
+                                            background: "linear-gradient(135deg, #10b981 0%, #059669 100%)"
+                                        }} className="rounded-xl p-2 shadow bg-green-600 text-white cursor-pointer hover:scale-105 transition-all duration-300">
+                                            <p className="mb-1"><RiInformation2Line /></p>
+                                            <p>{value}</p>
+                                        </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Notification d'enregistrement vocal */}
@@ -46,7 +72,7 @@ export default function Chatbot() {
                 </div>
 
                 <form id="form">
-                    <input type="text" name="chat" id="message" placeholder="Demandez moi ce que vous voulez" required />
+                    <input type="text" ref={message} name="chat" id="message" placeholder="Demandez moi ce que vous voulez" required />
                     <div className="form-buttons">
                         <button id="bouton-micro" type="button" title="Enregistrement vocal">
                             <svg viewBox="0 0 24 24">
@@ -55,7 +81,7 @@ export default function Chatbot() {
                                     d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z" />
                             </svg>
                         </button>
-                        <button id="envoyer" type="submit" title="Envoyer le message">
+                        <button id="envoyer" type="submit" ref={envoyer} title="Envoyer le message">
                             <svg viewBox="0 0 16 16">
                                 <path
                                     d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z" />
