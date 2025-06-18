@@ -89,7 +89,6 @@ export default function Footer() {
                 </div>
             </div>
             <div className="container mx-auto px-4 py-8 flex items-center justify-between gap-8">
-                <p>&copy; {new Date().getFullYear()} KYA-Energy Group. Tous droits réservés.</p>
                 <div className="flex items-center gap-4 justify-end w-max flex-wrap">
                     <Link href="http://www.fb.com/kya-energy">
                         <div className="font-bold text-2xl p-2 rounded-full bg-blue-900">
@@ -122,6 +121,7 @@ export default function Footer() {
                         </div>
                     </Link>
                 </div>
+                <p>&copy; {new Date().getFullYear()} KYA-Energy Group. Tous droits réservés.</p>
             </div>
         </footer>
     );
