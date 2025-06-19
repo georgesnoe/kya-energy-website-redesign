@@ -160,7 +160,7 @@ export default function Home() {
             <div className="flex justify-center items-center my-4">
               <div className="h-1 w-32 bg-green-300"></div>
             </div>
-            <p className="text-center">Découvrez notre gamme complète de groupes électrosolaires adaptés à tous vos besoins énergetiques.</p>
+            <p className="text-center text-xl">Découvrez notre gamme complète de groupes électrosolaires adaptés à tous vos besoins énergetiques.</p>
           </div>
           <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
             {
