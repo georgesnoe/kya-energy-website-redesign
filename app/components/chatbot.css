@@ -152,6 +152,11 @@
     -ms-overflow-style: none;
 }
 
+#historique,
+#historique p {
+    overflow-x: hidden;
+}
+
 #historique a,
 #historique a {
     color: #f59e0b;
