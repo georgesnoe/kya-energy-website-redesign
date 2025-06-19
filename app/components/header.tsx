@@ -11,7 +11,7 @@ export default function Header() {
 
     return (
         <header className="bg-white shadow">
-            <div className="container mx-auto px-4 h-24 flex items-center justify-between gap-8 relative">
+            <div className="container mx-auto px-4 h-24 flex items-center justify-between gap-6 relative">
                 <div className="flex items-center justify-center w-max">
                     <img src="/logo.avif" className="w-16 h-16 object-cover" />
                     {/* Faire ressembler le texte aux couleurs du logo */}
@@ -21,7 +21,7 @@ export default function Header() {
                 {/* Liens utiles */}
                 <div className={`${showMenu == true ? "" : "hidden"} bg-white p-4 rounded absolute top-20 right-0 xl:static xl:block z-50`}>
                     <nav>
-                        <ul className="flex items-start xl:items-center gap-3 flex-col xl:flex-row">
+                        <ul className="flex items-start xl:items-center gap-4 flex-col xl:flex-row">
                             {
                                 [
                                     ["Acceuil", "/"],
