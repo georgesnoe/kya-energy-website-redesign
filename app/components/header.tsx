@@ -15,13 +15,13 @@ export default function Header() {
                 <div className="flex items-center justify-center w-max">
                     <img src="/logo.avif" className="w-16 h-16 object-cover" />
                     {/* Faire ressembler le texte aux couleurs du logo */}
-                    <p className="font-bold text-sm text-green-700 text-right">Kya-Energy<br /><span className="text-orange-400">GROUP</span></p>
+                    <p className="font-bold text-sm text-green-700 text-right w-max">Kya-Energy<br /><span className="text-orange-400">GROUP</span></p>
                 </div>
 
                 {/* Liens utiles */}
                 <div className={`${showMenu == true ? "" : "hidden"} bg-white p-4 rounded absolute top-20 right-0 xl:static xl:block z-50`}>
                     <nav>
-                        <ul className="flex items-start xl:items-center gap-4 flex-col xl:flex-row">
+                        <ul className="flex items-start xl:items-center gap-3 flex-col xl:flex-row">
                             {
                                 [
                                     ["Acceuil", "/"],
@@ -33,7 +33,7 @@ export default function Header() {
                                     ["Fondation KYA", "/fondation-kya"]
                                 ].map((value, index) => (
                                     <li key={index} className="w-max">
-                                        <Link href={""} id={value[1].slice(1)}
+                                        <Link href={value[1]} id={value[1].slice(1)}
                                             className={`${pathname == value[1] ? "text-green-600" : ""} hover:text-green-500`}>
                                             {value[0]}
                                         </Link>
@@ -63,7 +63,7 @@ export default function Header() {
                     {/* Bouton hamburger */}
                     <div className="xl:hidden flex items-center">
                         <button onClick={() => { setShowMenu(!showMenu); document.getElementById(pathname.slice(1))?.focus() }} onBlur={() => setShowMenu(!showMenu)}>
-                            <LuMenu />
+                            <LuMenu size={48} />
                         </button>
                     </div>
                 </div>
