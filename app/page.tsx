@@ -90,7 +90,7 @@ export default function Home() {
             </div>
             <div className="rounded-xl overflow-hidden shadow">
               {/* Vidéo Youtube */}
-              <iframe className="w-full" width="670" height="499" src="https://www.youtube.com/embed/ayX_GLi40K8?list=TLGGgUtPL6h5MB8xODA2MjAyNQ" title="Video institutionnelle KYA Energy Group" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              <iframe className="w-full" width="670" height="499" src="https://www.youtube.com/embed/ayX_GLi40K8?list=TLGGgUtPL6h5MB8xOTA2MjAyNQ" title="Video institutionnelle KYA Energy Group" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
           </div>
         </div>
@@ -206,21 +206,21 @@ export default function Home() {
             <div className="space-y-4">
               {/* Contact */}
               <div>
-                <h1 className="font-bold text-green-700 underline text-xl">Adresse</h1>
+                <h1 className="font-bold text-green-700 underline text-2xl">Adresse</h1>
                 <p>300m, rue en face du Centre Culturel Loyola (CCL),<br />Route Mission Tové, Agoè Logopé</p>
                 <p>08 BP 81101, Lomé - Togo</p>
               </div>
               <div>
-                <h1 className="font-bold text-green-700 underline text-xl">Horaires</h1>
+                <h1 className="font-bold text-green-700 underline text-2xl">Horaires</h1>
                 <p>Lundi - Vendredi</p>
                 <p>07h30–12h00 | 14h00–17h30</p>
               </div>
               <div>
-                <h1 className="font-bold text-green-700 underline text-xl">Téléphone</h1>
+                <h1 className="font-bold text-green-700 underline text-2xl">Téléphone</h1>
                 <p>+228 <a href="tel:70453481" className="text-green-600">70 45 34 81</a> / <a href="99999380" className="text-green-600">99 99 93 80</a></p>
               </div>
               <div>
-                <h1 className="font-bold text-green-700 underline text-xl">E-mail</h1>
+                <h1 className="font-bold text-green-700 underline text-2xl">E-mail</h1>
                 <p><a href="mailto:info@kya-energy.com" className="text-green-600">info@kya-energy.com</a></p>
               </div>
             </div>
