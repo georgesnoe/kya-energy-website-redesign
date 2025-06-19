@@ -89,7 +89,7 @@ export default function Footer() {
                 </div>
             </div>
             <div className="container mx-auto px-4 py-8 flex items-center justify-between gap-8">
-                <div className="flex items-center gap-4 justify-end w-max flex-wrap">
+                <div className="flex items-center gap-4 justify-end w-max flex-wrap **:transition-all *:hover:scale-125 duration-300">
                     <Link href="http://www.fb.com/kya-energy">
                         <div className="font-bold text-2xl p-2 rounded-full bg-blue-900">
                             <RiFacebookLine color="skyblue" />
