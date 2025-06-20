@@ -21,7 +21,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
       </head>
       <body
-        className={`${googleSansText.className} font-medium antialiased bg-gray-100 text-gray-800 min-h-screen`}
+        className={`${googleSansText.className} font-medium antialiased bg-gray-100 text-gray-800 min-h-screen **:scroll-smooth **:transition-all **:duration-300 **:transition-discrete`}
       >
         <Header />
         <main>
