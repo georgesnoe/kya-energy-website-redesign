@@ -178,7 +178,7 @@ export default function Page() {
                                 ["/yves.png", "M. Yves LAWSON", "Directeur Général Adjoint"],
                                 ["/tchassama.png", "M. TCHASSAMA", "Directeur Technique et des Opérations"],
                                 ["/sylvie.png", "Mme Sylvie SHIKPE", "Directrice Commerciale & Marketing"],
-                                ["/eklou.jpg", "M. Yaovi V. EKLOU", "Directeur des Ressources Humaines"],
+                                ["/EKLOU.jpg", "M. Yaovi V. EKLOU", "Directeur des Ressources Humaines"],
                                 ["/fousseni.png", "M. Mohamed FOUSSENI", "Directeur Financier & Comptable"],
                                 ["/massan.png", "Mme Massan AGBEHADJI", "Assistante de Direction"]
                             ].map((value, index) => (
