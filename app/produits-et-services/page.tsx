@@ -130,15 +130,15 @@ export default function Page() {
                         <div className="flex justify-center items-center my-4">
                             <div className="h-1 w-32 bg-green-300"></div>
                         </div>
-                        <p className="text-center text-xl">Un accompagnement complet de l'étude à la maintenance de vos installations</p>
+                        <p className="text-center text-xl">Un accompagnement complet de l&apos;étude à la maintenance de vos installations</p>
                     </div>
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
                         {
                             [
-                                [<RiCalculatorLine />, "Etude & Dimensionnement", "Analyse de vos besoins énergétiques et dimensionnement optimal"],
-                                [<RiFlashlightLine />, "Installation", "Installation professionnelle par nos équipes certifiées"],
-                                [<RiShieldLine />, "Maintenance", "Maintenance préventive et curative pour optimiser les performances"],
-                                [<Ri24HoursLine />, "Support 24/7", "Assistance technique disponible 24h/24 et 7j/7"]
+                                [<RiCalculatorLine key={0} />, "Etude & Dimensionnement", "Analyse de vos besoins énergétiques et dimensionnement optimal"],
+                                [<RiFlashlightLine key={1} />, "Installation", "Installation professionnelle par nos équipes certifiées"],
+                                [<RiShieldLine key={2} />, "Maintenance", "Maintenance préventive et curative pour optimiser les performances"],
+                                [<Ri24HoursLine key={3} />, "Support 24/7", "Assistance technique disponible 24h/24 et 7j/7"]
                             ].map((value, index) => (
                                 <div key={index} className="grid grid-rows-3 flex-col gap-1 p-8 bg-white rounded-xl shadow hover:shadow-xl transition-all duration-300">
                                     <div className="flex items-center justify-center">
@@ -165,14 +165,14 @@ export default function Page() {
                         <div className="flex justify-center items-center my-4">
                             <div className="h-1 w-32 bg-green-300"></div>
                         </div>
-                        <p className="text-center text-xl">Accédez à l'énergie solaire sans investissement initial important</p>
+                        <p className="text-center text-xl">Accédez à l&apos;énergie solaire sans investissement initial important</p>
                     </div>
                     <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {
                             [
-                                [<RiCoinsLine />, "15 %", "Acompte initial seulement", "bg-orange-200", "text-orange-700"],
-                                [<LuClock />, "10 ans", "Durée de remboursement maximum", "bg-green-200", "text-green-700"],
-                                [<LuInbox />, "100 %", "Installation et maintenance incluses", "bg-blue-200", "text-blue-700"]
+                                [<RiCoinsLine key={0} />, "15 %", "Acompte initial seulement", "bg-orange-200", "text-orange-700"],
+                                [<LuClock key={1} />, "10 ans", "Durée de remboursement maximum", "bg-green-200", "text-green-700"],
+                                [<LuInbox key={2} />, "100 %", "Installation et maintenance incluses", "bg-blue-200", "text-blue-700"]
                             ].map((value, index) => (
                                 <div key={index} className="grid grid-rows-3 flex-col gap-1 p-8 bg-white rounded-xl shadow hover:shadow-xl transition-all duration-300">
                                     <div className="flex items-center justify-center">

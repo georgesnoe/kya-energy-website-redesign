@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useState } from "react";
 import { FaGlobeAfrica, FaLeaf, FaSolarPanel } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
-import { LuAward, LuCrown, LuGlobe, LuGroup, LuHouse, LuLeaf, LuLightbulb, LuRocket, LuScale, LuSchool, LuShield, LuSofa, LuTable, LuTable2, LuTablet, LuTabletSmartphone, LuTrophy } from "react-icons/lu";
+import { LuAward, LuCrown, LuGlobe, LuGroup, LuLeaf, LuLightbulb, LuRocket, LuScale, LuSchool, LuShield, LuTabletSmartphone, LuTrophy } from "react-icons/lu";
 import { RiArrowLeftLine, RiArrowRightLine, RiOrganizationChart, RiShakeHandsLine } from "react-icons/ri";
 
 export default function Page() {
@@ -41,8 +41,8 @@ export default function Page() {
                     {/* Texte */}
                     <div className="absolute top-0 left-0 z-30 w-full h-full bg-gradient-to-r from-[#05df72a0] to-[#fffa] flex flex-col items-center justify-center">
                         <div className="text-white w-[90%] md:w-[70%] lg:w-1/2 space-y-8">
-                            <h1 className="text-2xl md:text-4xl lg:text-6xl">Notre Équipe<br />d'Excellence</h1>
-                            <p className="text-lg md:text-xl lg:text-2xl">Découvrez les experts qui façonnent l'avenir énergétique de l'Afrique avec passion, innovation et professionnalisme.</p>
+                            <h1 className="text-2xl md:text-4xl lg:text-6xl">Notre Équipe<br />d&apos;Excellence</h1>
+                            <p className="text-lg md:text-xl lg:text-2xl">Découvrez les experts qui façonnent l&apos;avenir énergétique de l&apos;Afrique avec passion, innovation et professionnalisme.</p>
                         </div>
                         <div className="flex justify-between items-center w-[90%] md:w-[70%] lg:w-1/2 mt-4 md:mt-16 lg:mt-32">
                             {/* Indicateurs */}
@@ -86,18 +86,18 @@ export default function Page() {
                     <div className="flex items-center justify-center my-4">
                         <p className="w-max rounded-full px-4 py-2 bg-green-700 text-white font-bold text-sm">Notre vision</p>
                     </div>
-                    <h1 className="text-center text-4xl font-bold w-full">Transformer l'Afrique par l'Énergie Solaire</h1>
+                    <h1 className="text-center text-4xl font-bold w-full">Transformer l&apos;Afrique par l&apos;Énergie Solaire</h1>
                     <div className="flex justify-center items-center my-4">
                         <div className="h-1 w-32 bg-green-300"></div>
                     </div>
-                    <p className="text-center text-xl">KYA-Energy Group s'engage dans la révolution énergétique africaine avec une ambition claire : devenir un leader incontournable des énergies renouvelables sur le continent.</p>
+                    <p className="text-center text-xl">KYA-Energy Group s&apos;engage dans la révolution énergétique africaine avec une ambition claire : devenir un leader incontournable des énergies renouvelables sur le continent.</p>
                 </div>
                 <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {
                         [
-                            [<LuGlobe />, "Leadership Continental", "Ambition de figurer parmi les 10 leaders de l'industrie énergétique en Afrique"],
-                            [<LuTabletSmartphone />, "Innovation Technologique", "Développement de solutions solaires de pointe adaptées au contexte africain"],
-                            [<LuTrophy />, "Impact Durable", "Extension de notre influence pour un avenir énergétique durable en Afrique"]
+                            [<LuGlobe key={0} />, "Leadership Continental", "Ambition de figurer parmi les 10 leaders de l'industrie énergétique en Afrique"],
+                            [<LuTabletSmartphone key={1} />, "Innovation Technologique", "Développement de solutions solaires de pointe adaptées au contexte africain"],
+                            [<LuTrophy key={2} />, "Impact Durable", "Extension de notre influence pour un avenir énergétique durable en Afrique"]
                         ].map((value, index) => (
                             <div key={index} className="grid grid-rows-3 flex-col gap-1 p-8 bg-white rounded-xl shadow hover:shadow-xl hover:scale-105 transition-all duration-300">
                                 <div className="flex items-center justify-center">
@@ -132,13 +132,13 @@ export default function Page() {
                     <div className="flex flex-col gap-8">
                         <h1 className="font-bold text-4xl text-center lg:text-left">Prof. Yao K. AZOUMAH</h1>
                         <p className="text-green-600 text-2xl text-center lg:text-left">Fondateur et Directeur Général</p>
-                        <p className="text-xl">Visionnaire et pionnier de l'énergie renouvelable en Afrique, le Professeur Yao K. AZOUMAH combine expertise académique et vision entrepreneuriale pour révolutionner le secteur énergétique africain.</p>
+                        <p className="text-xl">Visionnaire et pionnier de l&apos;énergie renouvelable en Afrique, le Professeur Yao K. AZOUMAH combine expertise académique et vision entrepreneuriale pour révolutionner le secteur énergétique africain.</p>
                         <div className="space-y-8">
                             {
                                 [
-                                    [<LuSchool />, "Professeur d'université", "Expert reconnu en énergies renouvelables"],
-                                    [<LuLightbulb />, "Innovateur", "Pionnier des solutions solaires africaines"],
-                                    [<LuAward />, "Leader Visionnaire", "Architecte de l'avenir énergétique"]
+                                    [<LuSchool key={0} />, "Professeur d'université", "Expert reconnu en énergies renouvelables"],
+                                    [<LuLightbulb key={1} />, "Innovateur", "Pionnier des solutions solaires africaines"],
+                                    [<LuAward key={2} />, "Leader Visionnaire", "Architecte de l'avenir énergétique"]
                                 ].map((value, index) => (
                                     <div key={index}>
                                         <div className="flex items-center gap-4 p-8 bg-white shadow hover:shadow-xl transition-all duration-300 rounded-xl">
@@ -169,7 +169,7 @@ export default function Page() {
                         <div className="flex justify-center items-center my-4">
                             <div className="h-1 w-32 bg-green-300"></div>
                         </div>
-                        <p className="text-center text-xl">Une équipe d'experts chevronnés avec plus de 15 ans d'expérience collective, unis par une vision commune d'excellence et d'innovation.</p>
+                        <p className="text-center text-xl">Une équipe d&apos;experts chevronnés avec plus de 15 ans d&apos;expérience collective, unis par une vision commune d&apos;excellence et d&apos;innovation.</p>
                     </div>
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {
@@ -216,12 +216,12 @@ export default function Page() {
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {
                         [
-                            [<LuAward />, "Excellence", "Professionnalisme et rigueur dans chaque projet"],
-                            [<LuShield />, "Intégrité", "Transparence et honnêteté en toutes circonstances"],
-                            [<LuRocket />, "Innovation", "Créativité et solutions avant-gardistes"],
-                            [<LuGroup />, "Collaboration", "Esprit d'équipe et synergie collective"],
-                            [<LuLeaf />, "Durabilité", "Responsabilité environnementale et sociale"],
-                            [<LuScale />, "Équité", "Justice et fairness dans toutes nos relations"]
+                            [<LuAward key={0} />, "Excellence", "Professionnalisme et rigueur dans chaque projet"],
+                            [<LuShield key={1} />, "Intégrité", "Transparence et honnêteté en toutes circonstances"],
+                            [<LuRocket key={2} />, "Innovation", "Créativité et solutions avant-gardistes"],
+                            [<LuGroup key={3} />, "Collaboration", "Esprit d'équipe et synergie collective"],
+                            [<LuLeaf key={4} />, "Durabilité", "Responsabilité environnementale et sociale"],
+                            [<LuScale key={5} />, "Équité", "Justice et fairness dans toutes nos relations"]
                         ].map((value, index) => (
                             <div key={index} className="grid grid-rows-3 flex-col gap-1 p-8 bg-white rounded-xl shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                 <div className="flex items-center justify-center">
@@ -256,10 +256,10 @@ export default function Page() {
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {
                             [
-                                [<FaSolarPanel />, "1,000+", "Installations Solaires", "Systèmes déployés avec succès"],
-                                [<FaHouse />, "50,000+", "Foyers Alimentés", "Familles bénéficiant d'énergie propre"],
-                                [<FaLeaf />, "25,000T", "CO₂ Évitées", "Impact environnemental positif"],
-                                [<FaGlobeAfrica />, "15", "Pays d'Intervention", "Présence continentale active"],
+                                [<FaSolarPanel key={0} />, "1,000+", "Installations Solaires", "Systèmes déployés avec succès"],
+                                [<FaHouse key={1} />, "50,000+", "Foyers Alimentés", "Familles bénéficiant d'énergie propre"],
+                                [<FaLeaf key={2} />, "25,000T", "CO₂ Évitées", "Impact environnemental positif"],
+                                [<FaGlobeAfrica key={3} />, "15", "Pays d'Intervention", "Présence continentale active"],
                             ].map((value, index) => (
                                 <div key={index} className="grid grid-rows-[repeat(4,auto)] flex-col gap-2 p-8 bg-white rounded-xl shadow hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
                                     <div className="flex items-center justify-center">
@@ -285,7 +285,7 @@ export default function Page() {
                 {/* Notre impact */}
                 <div className="container mx-auto px-4">
                     <div className="px-4 lg:px-48">
-                        <h1 className="text-center text-4xl font-bold w-full">Rejoignez l'Aventure KYA-Energy</h1>
+                        <h1 className="text-center text-4xl font-bold w-full">Rejoignez l&apos;Aventure KYA-Energy</h1>
                         <div className="flex justify-center items-center my-8">
                             <div className="h-1 text-center text-xl">Découvrez nos opportunités et participez à la révolution énergétique africaine</div>
                         </div>
@@ -294,7 +294,7 @@ export default function Page() {
                                 <Link href="#equipe">
                                     <div className="w-max px-4 py-4 gap-2 flex items-center justify-center rounded-full bg-orange-400 hover:bg-orange-500 transition-colors duration-300">
                                         <p className="text-2xl"><RiOrganizationChart /></p>
-                                        <p>Voir l'organigramme</p>
+                                        <p>Voir l&apos;organigramme</p>
                                     </div>
                                 </Link>
                                 <Link href="">
