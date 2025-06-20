@@ -76,9 +76,9 @@ export default function Page() {
                     <div className="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
                         {
                             [
-                                ["/kya-sop-residentiel.avif", "KYA-Sol Résidentiel", "Solutions adaptées aux maisons individuelles et petits bâtiments.", ["Installation rapide", "Maintenance simplifiée", "Garantie 5 ans"], "#", <RiHome3Line key={0} />, "Populaire", "bg-blue-300", "A partir de 500 000 FCFA"],
-                                ["/kya-sop-commercial.avif", "KYA-Sol Commercial", "Systèmes haute performance pour entreprises et industries.", ["Haute capacité", "Monitoring avancé", "ROI optimisé"], "#", <RiBuildingFill key={1} />, "Recommandé", "bg-green-300", "Location-vente disponible"],
-                                ["/kya-sop-communautaire.avif", "KYA-Sol Communautaire", "Projets d'envergure pour collectivités et institutions.", ["Solutions sur mesure", "Financement flexible", "Impact social"], "#", <RiGroupLine key={2} />, "Sur mesure", "bg-orange-300", "Devis personnalisé"]
+                                { 0: "/kya-sop-residentiel.avif", 1: "KYA-Sol Résidentiel", 2: "Solutions adaptées aux maisons individuelles et petits bâtiments.", 3: ["Installation rapide", "Maintenance simplifiée", "Garantie 5 ans"], 4: "#", 5: <RiHome3Line key={0} />, 6: "Populaire", 7: "bg-blue-300", 8: "A partir de 500 000 FCFA" },
+                                { 0: "/kya-sop-commercial.avif", 1: "KYA-Sol Commercial", 2: "Systèmes haute performance pour entreprises et industries.", 3: ["Haute capacité", "Monitoring avancé", "ROI optimisé"], 4: "#", 5: <RiBuildingFill key={1} />, 6: "Recommandé", 7: "bg-green-300", 8: "Location-vente disponible" },
+                                { 0: "/kya-sop-communautaire.avif", 1: "KYA-Sol Communautaire", 2: "Projets d'envergure pour collectivités et institutions.", 3: ["Solutions sur mesure", "Financement flexible", "Impact social"], 4: "#", 5: <RiGroupLine key={2} />, 6: "Sur mesure", 7: "bg-orange-300", 8: "Devis personnalisé" }
                             ].map((value, index) => (
                                 <div key={index} className="relative p-4 rounded-xl bg-white space-y-8 flex flex-col justify-between">
                                     <div className={`absolute -top-3 right-3 py-1 font-bold text-sm rounded-full px-4 ${value[7]}`}>
