@@ -22,6 +22,7 @@ export default function RootLayout({
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         {/* Google Tag Manager */}
         <Script src="/analytics.js" />
+        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-6KJPJKDZTZ" />
         {/* End Google Tag Manager */}
       </head>
       <body
