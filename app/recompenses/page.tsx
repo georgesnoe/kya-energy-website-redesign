@@ -1,15 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
 import { FaCalendarAlt, FaDownload, FaGlobeAfrica, FaHandshake, FaLeaf, FaLightbulb, FaPlay, FaRocket, FaTrophy } from "react-icons/fa";
 import { FaEarthAfrica, FaPeopleGroup } from "react-icons/fa6";
 
 export default function Page() {
-    const [prix, setPrix] = useState(16);
-    const [annee, setAnnee] = useState(new Date().getFullYear() - 2015);
-    const [pays, setPays] = useState(4);
-    const [satisfaction, setSatisfaction] = useState(100);
 
     return (
         <>
@@ -91,7 +86,7 @@ export default function Page() {
                         <div className="flex justify-center items-center my-4">
                             <div className="h-1 w-32 bg-green-300"></div>
                         </div>
-                        <p className="text-center text-xl">Nos récompenses témoignent de notre engagement constant vers l'excellence et l'innovation.</p>
+                        <p className="text-center text-xl">Nos récompenses témoignent de notre engagement constant vers l&apos;excellence et l&apos;innovation.</p>
                     </div>
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                         <div className="p-8 rounded-xl shadow hover:shadow-xl hover:bg-blue-50 bg-red-50 grid grid-cols-1 gap-4">
@@ -99,7 +94,7 @@ export default function Page() {
                                 <p className="text-2xl text-center w-max bg-green-600 p-4 rounded-full text-white"><FaTrophy /></p>
                             </div>
                             <div>
-                                <p className="text-center text-6xl font-bold text-green-600">{prix}</p>
+                                <p className="text-center text-6xl font-bold text-green-600">16</p>
                             </div>
                             <div>
                                 <p className="text-center text-2xl font-bold">Prix et distinctions</p>
@@ -113,10 +108,10 @@ export default function Page() {
                                 <p className="text-2xl text-center w-max bg-green-600 p-4 rounded-full text-white"><FaCalendarAlt /></p>
                             </div>
                             <div>
-                                <p className="text-center text-6xl font-bold text-green-600">{annee}</p>
+                                <p className="text-center text-6xl font-bold text-green-600">{new Date().getFullYear() - 2015}</p>
                             </div>
                             <div>
-                                <p className="text-center text-2xl font-bold">Années d'Excellence</p>
+                                <p className="text-center text-2xl font-bold">Années d&apos;Excellence</p>
                             </div>
                             <div>
                                 <p className="text-gray-500 text-center">Depuis 2015, une croissance constante</p>
@@ -127,13 +122,13 @@ export default function Page() {
                                 <p className="text-2xl text-center w-max bg-green-600 p-4 rounded-full text-white"><FaEarthAfrica /></p>
                             </div>
                             <div>
-                                <p className="text-center text-6xl font-bold text-green-600">{pays}</p>
+                                <p className="text-center text-6xl font-bold text-green-600">4</p>
                             </div>
                             <div>
                                 <p className="text-center text-2xl font-bold">Pays Reconnaissants</p>
                             </div>
                             <div>
-                                <p className="text-gray-500 text-center">Impact régional en Afrique de l'Ouest</p>
+                                <p className="text-gray-500 text-center">Impact régional en Afrique de l&apos;Ouest</p>
                             </div>
                         </div>
                         <div className="p-8 rounded-xl shadow hover:shadow-xl hover:bg-blue-50 bg-red-50 grid grid-cols-1 gap-4">
@@ -141,7 +136,7 @@ export default function Page() {
                                 <p className="text-2xl text-center w-max bg-green-600 p-4 rounded-full text-white"><FaPeopleGroup /></p>
                             </div>
                             <div>
-                                <p className="text-center text-6xl font-bold text-green-600">{satisfaction}</p>
+                                <p className="text-center text-6xl font-bold text-green-600">100</p>
                             </div>
                             <div>
                                 <p className="text-center text-2xl font-bold">% Satisfaction</p>
@@ -158,13 +153,13 @@ export default function Page() {
             <div className="container mx-auto px-4 my-32">
                 <div className="px-4 lg:px-48">
                     <div className="flex items-center justify-center my-4">
-                        <p className="w-max rounded-full px-4 py-2 bg-green-700 text-white font-bold text-sm">Domaines d'Excellence</p>
+                        <p className="w-max rounded-full px-4 py-2 bg-green-700 text-white font-bold text-sm">Domaines d&apos;Excellence</p>
                     </div>
                     <h1 className="text-center text-4xl font-bold w-full">Nos Catégories de Récompenses</h1>
                     <div className="flex justify-center items-center my-4">
                         <div className="h-1 w-32 bg-green-300"></div>
                     </div>
-                    <p className="text-center text-xl">Nos prix couvrent tous les aspects de notre activité, de l'innovation technologique à l'impact social. </p>
+                    <p className="text-center text-xl">Nos prix couvrent tous les aspects de notre activité, de l&apos;innovation technologique à l&apos;impact social. </p>
                 </div>
                 <div className="mt-8 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
                     {
@@ -214,7 +209,7 @@ export default function Page() {
                         <div className="my-8 flex items-center justify-center">
                             <p className="text-2xl p-8 rounded-full bg-green-700"><FaRocket /></p>
                         </div>
-                        <h1 className="text-center text-4xl font-bold w-full">Rejoignez l'Excellence</h1>
+                        <h1 className="text-center text-4xl font-bold w-full">Rejoignez l&apos;Excellence</h1>
                         <div className="flex justify-center items-center my-8">
                             <div className="h-1 text-center text-xl">Découvrez comment nos solutions primées peuvent transformer vos projets énergétiques et contribuer à un avenir plus durable.</div>
                         </div>
