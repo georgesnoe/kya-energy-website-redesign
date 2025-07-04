@@ -1,4 +1,5 @@
 import Script from "next/script";
+import "./fondation-kya.css";
 
 export default function Page() {
     return (
