@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
     function addRippleEffect(button) {
         if (!button) return
 
-        button.addEventListener("click", function () {
+        button.addEventListener("click", function (e) {
             const ripple = this.querySelector(".btn-ripple")
             if (ripple) {
                 ripple.style.width = "300px"
@@ -140,6 +140,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const volumeFilled = document.getElementById("volumeFilled")
     const volumeHandle = document.getElementById("volumeHandle")
     const speedBtn = document.getElementById("speedBtn")
+    const speedMenu = document.getElementById("speedMenu")
     const speedOptions = document.querySelectorAll(".speed-option")
     const fullscreenBtn = document.getElementById("fullscreenBtn")
     const fullscreenIcon = document.getElementById("fullscreenIcon")
@@ -438,6 +439,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // ===== SWIPER CAROUSEL =====
+    let activitiesSwiper;
 
     function initSwiper() {
         if (typeof window.Swiper !== "undefined") {

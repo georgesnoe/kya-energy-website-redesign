@@ -21,7 +21,7 @@ export default function Page() {
             <nav className="navbar" id="navbar">
                 <div className="nav-container">
                     <div className="nav-logo">
-                        <img src="/placeholder.svg?height=50&width=120" alt="KYA ÉNERGIE GROUPE" className="logo" />
+                        <img src="https://yongvic.github.io/kya_text/placeholder.svg?height=50&width=120" alt="KYA ÉNERGIE GROUPE" className="logo" />
                         <div className="certification-badges">
                             <div className="certification-badge">
                                 <i className="fas fa-certificate"></i>
@@ -54,9 +54,9 @@ export default function Page() {
             <section className="foundation-hero">
                 <div className="hero-video-container">
                     <video className="hero-video" autoPlay muted loop playsInline>
-                        <source src="img/file.mp4" type="video/mp4" />
+                        <source src="https://yongvic.github.io/kya_text/img/file.mp4" type="video/mp4" />
 
-                        <img src="img/dio.jpg?height=1080&width=1920" alt="Solar panels landscape" />
+                        <img src="https://yongvic.github.io/kya_text/img/dio.jpg?height=1080&width=1920" alt="Solar panels landscape" />
                     </video>
                     <div className="hero-overlay"></div>
                 </div>
@@ -230,11 +230,11 @@ export default function Page() {
                                 <video
                                     id="kyaVideo"
                                     className="kya-video"
-                                    poster="img/fond.png.jpg?width=800"
+                                    poster="https://yongvic.github.io/kya_text/img/fond.png.jpg?width=800"
                                     preload="metadata"
                                 >
-                                    <source src="img/video_kya.mp4" type="video/mp4" />
-                                    <source src="img/video_kya.webm" type="video/webm" />
+                                    <source src="https://yongvic.github.io/kya_text/img/video_kya.mp4" type="video/mp4" />
+                                    <source src="https://yongvic.github.io/kya_text/img/video_kya.webm" type="video/webm" />
                                     Votre navigateur ne supporte pas la lecture vidéo.
                                 </video>
 
@@ -462,7 +462,7 @@ export default function Page() {
                                 <div className="swiper-slide">
                                     <div className="activity-card">
                                         <div className="activity-image">
-                                            <img src="img/acti1.avif?height=300&width=400" alt="Formation des jeunes filles" />
+                                            <img src="https://yongvic.github.io/kya_text/img/acti1.avif?height=300&width=400" alt="Formation des jeunes filles" />
                                             <div className="activity-overlay">
                                                 <div className="activity-icon">
                                                     <i className="fas fa-play"></i>
@@ -489,7 +489,7 @@ export default function Page() {
                                 <div className="swiper-slide">
                                     <div className="activity-card">
                                         <div className="activity-image">
-                                            <img src="img/acti4.avif?height=300&width=400" alt="Installation solaire" />
+                                            <img src="https://yongvic.github.io/kya_text/img/acti4.avif?height=300&width=400" alt="Installation solaire" />
                                             <div className="activity-overlay">
                                                 <div className="activity-icon">
                                                     <i className="fas fa-play"></i>
@@ -516,7 +516,7 @@ export default function Page() {
                                 <div className="swiper-slide">
                                     <div className="activity-card">
                                         <div className="activity-image">
-                                            <img src="/placeholder.svg?height=300&width=400" alt="Conférence éducation" />
+                                            <img src="https://yongvic.github.io/kya_text/placeholder.svg?height=300&width=400" alt="Conférence éducation" />
                                             <div className="activity-overlay">
                                                 <div className="activity-icon">
                                                     <i className="fas fa-play"></i>
@@ -543,7 +543,7 @@ export default function Page() {
                                 <div className="swiper-slide">
                                     <div className="activity-card">
                                         <div className="activity-image">
-                                            <img src="img/acti3.avif?height=300&width=400" alt="Remise de bourses" />
+                                            <img src="https://yongvic.github.io/kya_text/img/acti3.avif?height=300&width=400" alt="Remise de bourses" />
                                             <div className="activity-overlay">
                                                 <div className="activity-icon">
                                                     <i className="fas fa-play"></i>
@@ -609,25 +609,25 @@ export default function Page() {
                         <div className="sponsors-grid">
                             <div className="sponsor-card">
                                 <div className="sponsor-logo">
-                                    <img src="img/asecna.png?height=80&width=160" alt="Sponsor 1" />
+                                    <img src="https://yongvic.github.io/kya_text/img/asecna.png?height=80&width=160" alt="Sponsor 1" />
                                 </div>
                                 <div className="sponsor-glow"></div>
                             </div>
                             <div className="sponsor-card">
                                 <div className="sponsor-logo">
-                                    <img src="img/cetef.avif?height=80&width=160" alt="CETEF" />
+                                    <img src="https://yongvic.github.io/kya_text/img/cetef.avif?height=80&width=160" alt="CETEF" />
                                 </div>
                                 <div className="sponsor-glow"></div>
                             </div>
                             <div className="sponsor-card">
                                 <div className="sponsor-logo">
-                                    <img src="img/onono.avif?height=80&width=160" alt="ONOMO" />
+                                    <img src="https://yongvic.github.io/kya_text/img/onono.avif?height=80&width=160" alt="ONOMO" />
                                 </div>
                                 <div className="sponsor-glow"></div>
                             </div>
                             <div className="sponsor-card">
                                 <div className="sponsor-logo">
-                                    <img src="img/MOOV.avif?height=80&width=160" alt="Sponsor 4" />
+                                    <img src="https://yongvic.github.io/kya_text/img/MOOV.avif?height=80&width=160" alt="Sponsor 4" />
                                 </div>
                                 <div className="sponsor-glow"></div>
                             </div>
@@ -647,7 +647,7 @@ export default function Page() {
                     <div className="news-grid">
                         <article className="news-card" data-aos="fade-up" data-aos-delay="100">
                             <div className="news-image">
-                                <img src="img/2fcfb1_6094c382ee544223a1d5904f89862906~mv2.avif?height=250&width=350" alt="Formation des jeunes filles" />
+                                <img src="https://yongvic.github.io/kya_text/img/2fcfb1_6094c382ee544223a1d5904f89862906~mv2.avif?height=250&width=350" alt="Formation des jeunes filles" />
                                 <div className="news-overlay">
                                     <div className="news-category">Formation</div>
                                 </div>
@@ -682,7 +682,7 @@ export default function Page() {
 
                         <article className="news-card" data-aos="fade-up" data-aos-delay="300">
                             <div className="news-image">
-                                <img src="img/3191ca_33235050d9ff4df2a7bb29133111eda6~mv2.avif?height=250&width=350" alt="Réunion du Conseil" />
+                                <img src="https://yongvic.github.io/kya_text/img/3191ca_33235050d9ff4df2a7bb29133111eda6~mv2.avif?height=250&width=350" alt="Réunion du Conseil" />
                                 <div className="news-overlay">
                                     <div className="news-category">Gouvernance</div>
                                 </div>
@@ -717,7 +717,7 @@ export default function Page() {
 
                         <article className="news-card" data-aos="fade-up" data-aos-delay="500">
                             <div className="news-image">
-                                <img src="img/3191ca_6ad0f10b94204d6e98884d78e6fe026a~mv2.avif?height=250&width=350" alt="Soutien renouvelé" />
+                                <img src="https://yongvic.github.io/kya_text/img/3191ca_6ad0f10b94204d6e98884d78e6fe026a~mv2.avif?height=250&width=350" alt="Soutien renouvelé" />
                                 <div className="news-overlay">
                                     <div className="news-category">Éducation</div>
                                 </div>
@@ -762,7 +762,7 @@ export default function Page() {
                     <div className="footer-content">
                         <div className="footer-section">
                             <div className="footer-logo">
-                                <img src="/placeholder.svg?height=40&width=100" alt="KYA ÉNERGIE GROUPE" />
+                                <img src="https://yongvic.github.io/kya_text/placeholder.svg?height=40&width=100" alt="KYA ÉNERGIE GROUPE" />
                                 <p>Democratizing access to sustainable energy</p>
                             </div>
                             <div className="social-links">
