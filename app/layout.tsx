@@ -24,6 +24,8 @@ export default function RootLayout({
         <Script src="/analytics.js" />
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-6KJPJKDZTZ" />
         {/* End Google Tag Manager */}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
       </head>
       <body
         className={`${googleSansText.className} font-medium antialiased bg-gray-100 text-gray-800 min-h-screen **:scroll-smooth **:transition-all **:duration-300 **:transition-discrete`}
