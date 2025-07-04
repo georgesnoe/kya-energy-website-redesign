@@ -4,7 +4,7 @@ import "./fondation-kya.css";
 export default function Page() {
     return (
         <>
-            <div className="loading-screen" id="loadingScreen">
+            {/* <div className="loading-screen" id="loadingScreen">
                 <div className="loading-content">
                     <div className="loading-logo">
                         <div className="logo-pulse">KYA</div>
@@ -15,10 +15,10 @@ export default function Page() {
                     </div>
                     <p className="loading-text">Chargement en cours...</p>
                 </div>
-            </div>
+            </div> */}
 
 
-            <nav className="navbar" id="navbar">
+            {/* <nav className="navbar" id="navbar">
                 <div className="nav-container">
                     <div className="nav-logo">
                         <img src="https://yongvic.github.io/kya_text/placeholder.svg?height=50&width=120" alt="KYA ÉNERGIE GROUPE" className="logo" />
@@ -48,7 +48,7 @@ export default function Page() {
                         <span></span>
                     </div>
                 </div>
-            </nav>
+            </nav> */}
 
 
             <section className="foundation-hero">
