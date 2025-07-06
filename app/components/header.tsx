@@ -62,7 +62,7 @@ export default function Header() {
                     <a href="#contact" className="hidden xl:inline scroll-smooth text-sm border rounded w-max p-2 border-green-500 bg-green-500 hover:bg-green-700 hover:border-green-700 text-white font-bold transition-colors duration-300">Contact</a>
                     {/* Bouton hamburger */}
                     <div className="xl:hidden flex items-center">
-                        <button onClick={() => { setShowMenu(!showMenu); document.getElementById(pathname.slice(1))?.focus() }} onBlur={() => setShowMenu(!showMenu)}>
+                        <button onClick={() => { setShowMenu(!showMenu); document.getElementById(pathname.slice(1))?.focus() }}>
                             <LuMenu size={48} />
                         </button>
                     </div>
