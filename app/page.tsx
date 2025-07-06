@@ -180,7 +180,7 @@ export default function Home() {
             </div>
             <div className="youtube-video rounded-xl overflow-hidden shadow opacity-0">
               {/* Vidéo Youtube */}
-              <iframe className="w-full" width="670" height="499" src="https://www.youtube.com/embed/ayX_GLi40K8?list=TLGGgUtPL6h5MB8xOTA2MjAyNQ" title="Video institutionnelle KYA Energy Group" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+              <iframe className="w-full" width="670" height="499" src="https://www.youtube.com/embed/ayX_GLi40K8" title="Video institutionnelle KYA Energy Group" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
           </div>
         </div>
