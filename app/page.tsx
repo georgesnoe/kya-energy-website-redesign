@@ -2,10 +2,13 @@ import { LuLeaf, LuCircleCheckBig, LuArrowRight } from "react-icons/lu";
 import { HiUserGroup, HiGlobeAlt } from "react-icons/hi2";
 import { RiLeafLine, RiAwardLine, RiFlashlightLine, RiShieldLine, RiGroupLine, RiGlobeLine } from "react-icons/ri";
 import Link from "next/link";
+import * as motion from "motion/react-client";
 
 export default function Home() {
   return (
-    <>
+    <motion.div initial={{ translateY: 1000 }} animate={{ translateY: 0 }} transition={{
+      duration: 2,
+    }}>
       <div className="container mx-auto px-4 mt-8">
         {/* Hero */}
         <div className="flex flex-col lg:flex-row py-8 gap-8">
@@ -231,6 +234,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-    </>
+    </motion.div>
   );
 }

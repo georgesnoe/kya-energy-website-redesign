@@ -1,830 +1,460 @@
-import Script from "next/script";
-import "./fondation-kya.css";
+// /app/page.tsx
 
-export default function Page() {
+"use client";
+
+import React, { useEffect, useRef } from 'react';
+import { motion, Variants, useMotionValue, useTransform, animate } from 'framer-motion';
+import {
+    FaHeart, FaDownload, FaRocket, FaBullseye, FaGraduationCap, FaSolarPanel,
+    FaGlobeAfrica, FaPlay, FaEye, FaCalendar, FaMapMarkerAlt,
+    FaComment, FaArrowRight, FaUser
+} from 'react-icons/fa';
+import { FiChevronRight } from 'react-icons/fi';
+
+// --- Framer Motion Animation Variants ---
+const fadeInUp: Variants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } }
+};
+
+const staggerContainer: Variants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+        },
+    },
+};
+
+const zoomIn: Variants = {
+    hidden: { opacity: 0, scale: 0.9 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.6, ease: 'easeOut' } }
+}
+
+// --- Reusable UI Components ---
+
+const SectionTitle = ({ children, className = '' }: { children: React.ReactNode, className?: string }) => (
+    <motion.h2 variants={fadeInUp} className={`text-3xl md:text-4xl font-bold text-slate-800 tracking-tight ${className}`}>
+        {children}
+    </motion.h2>
+);
+
+const Highlight = ({ children }: { children: React.ReactNode }) => (
+    <span className="text-teal-500">{children}</span>
+);
+
+const StatCounter = ({ value, label }: { value: number, label: string }) => {
+    // 1. Create a motion value, which can be animated without causing re-renders.
+    const count = useMotionValue(0);
+
+    // 2. Create a new motion value that transforms the original `count` by rounding it.
+    const rounded = useTransform(count, (latest) => Math.round(latest));
+
+    const ref = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        // This effect will run when the component is in view.
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    // 3. Animate the `count` motion value from 0 to the target `value`.
+                    //    This does NOT trigger component re-renders.
+                    const controls = animate(count, value, { duration: 2 });
+
+                    // Cleanup animation on unmount or when out of view
+                    return () => controls.stop();
+                }
+            },
+            { threshold: 0.1 }
+        );
+
+        if (ref.current) {
+            observer.observe(ref.current);
+        }
+
+        return () => {
+            if (ref.current) {
+                observer.unobserve(ref.current);
+            }
+        };
+    }, [value, count]); // Add `count` to dependencies
+
     return (
+        // 4. Use a <motion.div> and pass the `rounded` motion value directly as a child.
+        //    Framer Motion will update the DOM here automatically and efficiently.
+        <div ref={ref} className="text-center">
+            <motion.span className="text-4xl font-bold text-teal-500">
+                {rounded}
+            </motion.span>
+            <p className="text-sm text-slate-500 mt-1">{label}</p>
+        </div>
+    );
+};
+
+// --- Main Page Component ---
+export default function KyaFoundationPage() {
+
+    // Data for sections
+    const meansOfAction = [
+        "L'octroi de bourses et subventions de formation",
+        "L'organisation des concours d'innovation",
+        "L'organisation des cours de formation, conférences, séminaires",
+        "L'appui aux entrepreneurs",
+        "Le soutien à l'autonomisation des femmes et des jeunes filles",
+        "L'appui à l'insertion socio-professionnelle des jeunes diplômés"
+    ];
+
+    const objectives = [
+        "Accroître l'accès aux services énergétiques durables en milieu rural",
+        "Promouvoir la science et la technologie chez les femmes",
+        "Promouvoir l'employabilité des jeunes en énergies renouvelables",
+        "Contribuer à l'amélioration de la qualité de l'éducation",
+        "Contribuer à l'autonomisation économique des femmes",
+        "Contribuer à la lutte contre les changements climatiques"
+    ];
+
+    const sdgGoals = [
+        { odd: "ODD1", text: "Éliminer la pauvreté sous toutes ses formes" },
+        { odd: "ODD4", text: "Éducation de qualité pour tous" },
+        { odd: "ODD5", text: "Egalité des sexes et autonomisation des femmes" },
+        { odd: "ODD7", text: "Énergies durables pour tous" },
+        { odd: "ODD8", text: "Croissance économique et emploi pour tous" },
+        { odd: "ODD13", text: "Lutte contre les changements climatiques" },
+        { odd: "ODD17", text: "Partenariats pour la réalisation des objectifs" },
+    ];
+
+    const activities = [
+        { img: "/acti1.avif", title: "Formation des jeunes filles en solaire", desc: "Programme de formation technique pour l'autonomisation des femmes.", date: "Mai 2024", location: "Lomé, Togo" },
+        { img: "/acti4.avif", title: "Lancement de la fondation KYA", desc: "Un engagement durable pour l’impact social et environnemental.", date: "2015", location: "Lomé, Togo" },
+        // { img: "/placeholder.svg?height=300&width=400", title: "Conférence sur l'éducation inclusive", desc: "Sensibilisation sur l'importance de l'éducation des filles.", date: "Mars 2024", location: "Sokodé, Togo" },
+        { img: "/acti3.avif", title: "Remise de bourses d'études", desc: "Cérémonie de remise de bourses à 50 jeunes filles méritantes.", date: "Février 2024", location: "Lomé, Togo" },
+    ];
+
+    const newsItems = [
+        { img: "/2fcfb1_6094c382ee544223a1d5904f89862906~mv2.avif", category: "Formation", date: "7 mai 2024", author: "Fondation KYA", title: "Formation des jeunes filles en solaire : la Fondation KYA", excerpt: "Un programme innovant pour former les jeunes femmes aux technologies solaires et promouvoir leur autonomisation économique.", views: 74, comments: 0, likes: 12 },
+        { img: "/3191ca_33235050d9ff4df2a7bb29133111eda6~mv2.avif", category: "Gouvernance", date: "24 mai 2024", author: "Conseil d'administration", title: "Fondation KYA : Réunion du Conseil d'administration", excerpt: "Le conseil d'administration se réunit pour définir les orientations stratégiques et approuver les nouveaux projets.", views: 53, comments: 2, likes: 8 },
+        { img: "/3191ca_6ad0f10b94204d6e98884d78e6fe026a~mv2.avif", category: "Éducation", date: "24 mai 2024", author: "Équipe terrain", title: "Un soutien renouvelé pour l'éducation des filles", excerpt: "Extension du programme de bourses pour permettre à plus de jeunes filles d'accéder à l'enseignement supérieur.", views: 44, comments: 1, likes: 15 },
+    ];
+
+    const sponsors = [
+        { src: "/asecna.png", alt: "ASECNA" },
+        { src: "/CETEF.avif", alt: "CETEF" },
+        { src: "/onono.avif", alt: "ONOMO" },
+        { src: "/MOOV.avif", alt: "MOOV" },
+    ];
+
+    return (
+        // Wrap everything in a React.Fragment as we are not providing a single root element like <main>
         <>
-            {/* <div className="loading-screen" id="loadingScreen">
-                <div className="loading-content">
-                    <div className="loading-logo">
-                        <div className="logo-pulse">KYA</div>
-                        <div className="logo-pulse">FOUNDATION</div>
-                    </div>
-                    <div className="loading-bar">
-                        <div className="loading-progress"></div>
-                    </div>
-                    <p className="loading-text">Chargement en cours...</p>
-                </div>
-            </div> */}
-
-
-            {/* <nav className="navbar" id="navbar">
-                <div className="nav-container">
-                    <div className="nav-logo">
-                        <img src="https://yongvic.github.io/kya_text/placeholder.svg?height=50&width=120" alt="KYA ÉNERGIE GROUPE" className="logo" />
-                        <div className="certification-badges">
-                            <div className="certification-badge">
-                                <i className="fas fa-certificate"></i>
-                                <span>ISO 9001:2015</span>
-                            </div>
-                            <div className="quality-badge">
-                                <i className="fas fa-shield-check"></i>
-                                <span>QUALITY POLICY</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="nav-menu" id="nav-menu">
-                        <a href="index.html" className="nav-link">HOME PAGE</a>
-                        <a href="produits-services.html" className="nav-link">PRODUCTS & SERVICES</a>
-                        <a href="a-propos.html" className="nav-link">OUR TEAM</a>
-                        <a href="recompences.html" className="nav-link">AWARDS</a>
-                        <a href="certification.html" className="nav-link">CERTIFICATION</a>
-                        <a href="news.html" className="nav-link">NEWS</a>
-                        <a href="kya-foundation.html" className="nav-link active">KYA FOUNDATION</a>
-                    </div>
-                    <div className="hamburger" id="hamburger">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                </div>
-            </nav> */}
-
-
-            <section className="foundation-hero">
-                <div className="hero-video-container">
-                    <video className="hero-video" autoPlay muted loop playsInline>
-                        <source src="https://yongvic.github.io/kya_text/img/file.mp4" type="video/mp4" />
-
-                        <img src="https://yongvic.github.io/kya_text/img/dio.jpg?height=1080&width=1920" alt="Solar panels landscape" />
+            {/* 1. Hero Section */}
+            <section className="relative h-screen flex items-center justify-center text-white overflow-hidden">
+                <div className="absolute inset-0 z-0">
+                    <video className="w-full h-full object-cover" autoPlay muted loop playsInline src="/file.mp4">
+                        <img src="/dio.jpg" alt="Paysage de panneaux solaires" className="w-full h-full object-cover" />
                     </video>
-                    <div className="hero-overlay"></div>
+                    <div className="absolute inset-0 bg-black/60"></div>
                 </div>
-
-                <div className="hero-particles" id="heroParticles"></div>
-
-                <div className="container" >
-                    <div className="hero-content" >
-                        <div className="hero-text-block" data-aos="fade-up" data-aos-delay="300">
-                            <div className="hero-badge">
-                                <div className="badge-glow"></div>
-                                <span className="badge-text">FONDATION KYA</span>
-                            </div>
-
-                            <h1 className="hero-title">
-                                <span className="title-word" data-aos="fade-up" data-aos-delay="500">NOS</span>
-                                <span className="title-word highlight" data-aos="fade-up" data-aos-delay="700">INITIATIVES</span>
-                            </h1>
-
-                            <div className="hero-description" data-aos="fade-up" data-aos-delay="900">
-                                <p>
-                                    La Fondation KYA est créée en <span className="highlight-orange">octobre 2022</span>.
-                                    Elle a pour but de contribuer au développement socio-économique des populations africaines,
-                                    issues des groupes les plus vulnérables par des interventions en faveur du développement
-                                    en matière d&apos;<span className="highlight-green">énergie, d&apos;agriculture, de médecine, d&apos;éducation</span>
-                                    et de l&apos;environnement.
-                                </p>
-                                <p className="hero-motto">
-                                    <i className="fas fa-heart pulse"></i>
-                                    <strong>Fondation KYA, pour un monde meilleur.</strong>
-                                </p>
-                            </div>
-
-                            <div className="hero-actions" data-aos="fade-up" data-aos-delay="1100">
-                                <button className="download-btn" id="downloadBtn">
-                                    <div className="btn-bg"></div>
-                                    <div className="btn-content">
-                                        <i className="fas fa-download"></i>
-                                        <span>Télécharger la lettre d&apos;engagement</span>
-                                    </div>
-                                    <div className="btn-ripple"></div>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div className="scroll-indicator" data-aos="fade-up" data-aos-delay="1300">
-                    <div className="scroll-mouse">
-                        <div className="scroll-wheel"></div>
-                    </div>
-                    <p>Découvrir nos actions</p>
-                </div>
-            </section>
-
-
-            <section className="actions-goals-section">
-                <div className="section-bg">
-                    <div className="floating-shapes">
-                        <div className="shape shape-1"></div>
-                        <div className="shape shape-2"></div>
-                        <div className="shape shape-3"></div>
-                    </div>
-                </div>
-
-                <div className="actions-goals-grid">
-
-                    <div className="content-card action-card" data-aos="slide-right">
-                        <div className="card-bg-pattern"></div>
-                        <div className="card-content">
-                            <div className="card-header">
-                                <div className="card-icon">
-                                    <i className="fas fa-rocket"></i>
-                                </div>
-                                <h2>Nos moyens d&apos;actions</h2>
-                                <div className="card-line"></div>
-                            </div>
-
-                            <div className="card-body">
-                                <ul className="action-list">
-                                    <li className="list-item" data-aos="fade-left" data-aos-delay="100">
-                                        <div className="item-bullet"></div>
-                                        <span>L&apos;octroi de bourses et subventions de formation</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-left" data-aos-delay="200">
-                                        <div className="item-bullet"></div>
-                                        <span>L&apos;organisation des concours d&apos;innovation</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-left" data-aos-delay="300">
-                                        <div className="item-bullet"></div>
-                                        <span>L&apos;organisation des cours de formation, conférences, séminaires</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-left" data-aos-delay="400">
-                                        <div className="item-bullet"></div>
-                                        <span>L&apos;appui aux entrepreneurs</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-left" data-aos-delay="500">
-                                        <div className="item-bullet"></div>
-                                        <span>Le soutien à l&apos;autonomisation des femmes et des jeunes filles</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-left" data-aos-delay="600">
-                                        <div className="item-bullet"></div>
-                                        <span>L&apos;appui à l&apos;insertion socio-professionnelle des jeunes diplômés</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div className="content-card goals-card" data-aos="slide-left">
-                        <div className="card-bg-pattern"></div>
-                        <div className="card-content">
-                            <div className="card-header">
-                                <div className="card-icon">
-                                    <i className="fas fa-bullseye"></i>
-                                </div>
-                                <h2>Nos objectifs</h2>
-                                <div className="card-line"></div>
-                            </div>
-
-                            <div className="card-body">
-                                <ul className="goals-list">
-                                    <li className="list-item" data-aos="fade-right" data-aos-delay="100">
-                                        <div className="item-bullet"></div>
-                                        <span>Accroître l&apos;accès aux services énergétiques durables en milieu rural</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-right" data-aos-delay="200">
-                                        <div className="item-bullet"></div>
-                                        <span>Promouvoir la science et la technologie chez les femmes</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-right" data-aos-delay="300">
-                                        <div className="item-bullet"></div>
-                                        <span>Promouvoir l&apos;employabilité des jeunes en énergies renouvelables</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-right" data-aos-delay="400">
-                                        <div className="item-bullet"></div>
-                                        <span>Contribuer à l&apos;amélioration de la qualité de l&apos;éducation</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-right" data-aos-delay="500">
-                                        <div className="item-bullet"></div>
-                                        <span>Contribuer à l&apos;autonomisation économique des femmes</span>
-                                    </li>
-                                    <li className="list-item" data-aos="fade-right" data-aos-delay="600">
-                                        <div className="item-bullet"></div>
-                                        <span>Contribuer à la lutte contre les changements climatiques</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section className="director-video-section">
-                <div className="container">
-                    <div className="director-content" data-aos="fade-up">
-                        <div className="section-header">
-                            <h2 className="section-title">
-                                <span className="title-line">Les domaines</span>
-                                <span className="title-line highlight">d&apos;intervention</span>
-                            </h2>
-                            <p className="section-subtitle">
-                                Découvrez notre approche et notre vision à travers cette présentation vidéo
-                            </p>
-                        </div>
-
-                        <div className="video-player-container" data-aos="zoom-in" data-aos-delay="300">
-                            <div className="video-wrapper">
-                                <video
-                                    id="kyaVideo"
-                                    className="kya-video"
-                                    poster="https://yongvic.github.io/kya_text/img/fond.png.jpg?width=800"
-                                    preload="metadata"
-                                >
-                                    <source src="https://yongvic.github.io/kya_text/img/video_kya.mp4" type="video/mp4" />
-                                    <source src="https://yongvic.github.io/kya_text/img/video_kya.webm" type="video/webm" />
-                                    Votre navigateur ne supporte pas la lecture vidéo.
-                                </video>
-
-
-                                <div className="video-controls" id="videoControls">
-                                    <div className="controls-overlay">
-
-                                        <button className="control-btn play-pause-btn" id="playPauseBtn">
-                                            <i className="fas fa-play" id="playPauseIcon"></i>
-                                        </button>
-
-
-                                        <div className="progress-container">
-                                            <div className="progress-bar" id="progressBar">
-                                                <div className="progress-filled" id="progressFilled"></div>
-                                                <div className="progress-handle" id="progressHandle"></div>
-                                            </div>
-                                            <div className="time-display">
-                                                <span id="currentTime">0:00</span>
-                                                <span className="time-separator">/</span>
-                                                <span id="duration">0:00</span>
-                                            </div>
-                                        </div>
-
-
-                                        <div className="volume-container">
-                                            <button className="control-btn volume-btn" id="volumeBtn">
-                                                <i className="fas fa-volume-up" id="volumeIcon"></i>
-                                            </button>
-                                            <div className="volume-slider" id="volumeSlider">
-                                                <div className="volume-bar">
-                                                    <div className="volume-filled" id="volumeFilled"></div>
-                                                    <div className="volume-handle" id="volumeHandle"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-                                        <div className="speed-container">
-                                            <button className="control-btn speed-btn" id="speedBtn">
-                                                <span className="speed-text">1x</span>
-                                            </button>
-                                            <div className="speed-menu" id="speedMenu">
-                                                <button className="speed-option" data-speed="0.5">0.5x</button>
-                                                <button className="speed-option" data-speed="0.75">0.75x</button>
-                                                <button className="speed-option active" data-speed="1">1x</button>
-                                                <button className="speed-option" data-speed="1.25">1.25x</button>
-                                                <button className="speed-option" data-speed="1.5">1.5x</button>
-                                                <button className="speed-option" data-speed="2">2x</button>
-                                            </div>
-                                        </div>
-
-
-                                        <button className="control-btn fullscreen-btn" id="fullscreenBtn">
-                                            <i className="fas fa-expand" id="fullscreenIcon"></i>
-                                        </button>
-                                    </div>
-                                </div>
-
-
-                                <div className="video-loading" id="videoLoading">
-                                    <div className="loading-spinner">
-                                        <div className="spinner-ring"></div>
-                                        <div className="spinner-ring"></div>
-                                        <div className="spinner-ring"></div>
-                                    </div>
-                                    <p>Chargement de la vidéo...</p>
-                                </div>
-
-
-                                <div className="video-overlay-initial" id="videoOverlay">
-                                    <div className="overlay-content">
-                                        <div className="play-button-large" id="playButtonLarge">
-                                            <i className="fas fa-play"></i>
-                                        </div>
-                                        <h3>Présentation KYA Foundation</h3>
-                                        <p>Découvrez notre mission et nos actions</p>
-                                        <div className="video-duration-badge">
-                                            <i className="fas fa-clock"></i>
-                                            <span>5:30</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div className="video-info" data-aos="fade-up" data-aos-delay="500">
-                                <div className="video-details">
-                                    <h4>À propos de cette vidéo</h4>
-                                    <p>
-                                        Cette présentation vous donne un aperçu complet de la mission de la Fondation KYA,
-                                        de nos domaines d&apos;intervention et de l&apos;impact de nos actions sur les communautés africaines.
-                                        Découvrez comment nous contribuons au développement durable à travers l&apos;éducation,
-                                        les énergies renouvelables et l&apos;autonomisation des femmes.
-                                    </p>
-                                    <div className="video-tags">
-                                        <span className="tag">Éducation</span>
-                                        <span className="tag">Énergies Renouvelables</span>
-                                        <span className="tag">Développement Durable</span>
-                                        <span className="tag">Autonomisation</span>
-                                    </div>
-                                </div>
-
-                                <div className="video-stats">
-                                    <div className="stat-item">
-                                        <i className="fas fa-eye"></i>
-                                        <span>2,847 vues</span>
-                                    </div>
-                                    <div className="stat-item">
-                                        <i className="fas fa-thumbs-up"></i>
-                                        <span>156 likes</span>
-                                    </div>
-                                    <div className="stat-item">
-                                        <i className="fas fa-share"></i>
-                                        <span>23 partages</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section className="intervention-domains">
-                <div className="container">
-                    <div className="domains-grid">
-                        <div className="domain-card" data-aos="zoom-in" data-aos-delay="100">
-                            <div className="domain-icon">
-                                <div className="icon-bg"></div>
-                                <i className="fas fa-graduation-cap"></i>
-                            </div>
-                            <div className="domain-content">
-                                <h3 className="domain-title">Éducation et formation</h3>
-                                <p className="domain-description">
-                                    L&apos;éducation est un droit fondamental, un puissant vecteur de développement et l&apos;un des meilleurs moyens de réduire la pauvreté,  de promouvoir l&apos;égalité entre les sexes et de faire progresser la paix et la stabilité.
-                                    C&apos;est dans ce sens que la Fondation KYA intervient dans l’accès à l’éducation des jeunes filles dans le domaine de la science et la technologie.   La fondation encourage  la poursuite des études chez les filles talentueuses  et octroie également des bourses d’études à celles qui sont vulnérables.
-                                </p>
-                                <div className="domain-stats">
-                                    <div className="stat">
-                                        <span className="stat-number" data-count="150">0</span>
-                                        <span className="stat-label">Bourses accordées</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="domain-card" data-aos="zoom-in" data-aos-delay="300">
-                            <div className="domain-icon">
-                                <div className="icon-bg"></div>
-                                <i className="fas fa-solar-panel"></i>
-                            </div>
-                            <div className="domain-content">
-                                <h3 className="domain-title">Énergies renouvelables</h3>
-                                <p className="domain-description">
-                                    L’énergie est importante pour le développement social et économique.  Afin de faciliter l’accès à l’énergie durable en milieu rural et semi-urbain, la Fondation KYA intervient  en installation de système de Pompage et systèmes d&apos;éclairage solaire. Des formations gratuites sont également offertes aux filles en installation et maintenance des systèmes solaires photovoltaïques chaque année.
-                                </p>
-                                <div className="domain-stats">
-                                    <div className="stat">
-                                        <span className="stat-number" data-count="75">0</span>
-                                        <span className="stat-label">Installations solaires</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="domain-card full-width" data-aos="zoom-in" data-aos-delay="500">
-                            <div className="domain-icon">
-                                <div className="icon-bg"></div>
-                                <i className="fas fa-globe-africa"></i>
-                            </div>
-                            <div className="domain-content">
-                                <h3 className="domain-title">Développement durable</h3>
-                                <p className="domain-description">
-                                    Alignée sur les 17 Objectifs de Développement Durable de l&apos;ONU,
-                                    la Fondation KYA se concentre sur 7 objectifs prioritaires pour transformer les communautés africaines.
-                                </p>
-                                <div className="sdg-grid">
-                                    <div className="sdg-item">
-                                        <div className="sdg-number">ODD1</div>
-                                        <span>Éliminer la pauvreté sous toutes ses formes</span>
-                                    </div>
-                                    <div className="sdg-item">
-                                        <div className="sdg-number">ODD4</div>
-                                        <span>Éducation de qualité  pour tous</span>
-                                    </div>
-                                    <div className="sdg-item">
-                                        <div className="sdg-number">ODD5</div>
-                                        <span>Egalité des sexes et autonomisation des femmes</span>
-                                    </div>
-                                    <div className="sdg-item">
-                                        <div className="sdg-number">ODD7</div>
-                                        <span>Énergies durables pour tous</span>
-                                    </div>
-                                    <div className="sdg-item">
-                                        <div className="sdg-number">ODD8</div>
-                                        <span>Croissance économique et emploi pour tous</span>
-                                    </div>
-                                    <div className="sdg-item">
-                                        <div className="sdg-number">ODD13</div>
-                                        <span>Lutte contre les changements climatiques</span>
-                                    </div>
-                                    <div className="sdg-item">
-                                        <div className="sdg-number">ODD17</div>
-                                        <span>Partenariats pour la réalisation des objectifs</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section className="activities-section">
-                <div className="container">
-                    <h2 className="section-title center" data-aos="fade-up">
-                        <span className="title-line">Quelques images</span>
-                        <span className="title-line highlight">de nos activités</span>
-                    </h2>
-
-                    <div className="activities-carousel" data-aos="fade-up" data-aos-delay="300">
-                        <div className="swiper activitiesSwiper">
-                            <div className="swiper-wrapper">
-                                <div className="swiper-slide">
-                                    <div className="activity-card">
-                                        <div className="activity-image">
-                                            <img src="https://yongvic.github.io/kya_text/img/acti1.avif?height=300&width=400" alt="Formation des jeunes filles" />
-                                            <div className="activity-overlay">
-                                                <div className="activity-icon">
-                                                    <i className="fas fa-play"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="activity-content">
-                                            <h3>Formation des jeunes filles en solaire</h3>
-                                            <p>Programme de formation technique pour l&apos;autonomisation des femmes dans le secteur de l&apos;énergie solaire.</p>
-                                            <div className="activity-meta">
-                                                <span className="activity-date">
-                                                    <i className="fas fa-calendar"></i>
-                                                    Mai 2024
-                                                </span>
-                                                <span className="activity-location">
-                                                    <i className="fas fa-map-marker-alt"></i>
-                                                    Lomé, Togo
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="swiper-slide">
-                                    <div className="activity-card">
-                                        <div className="activity-image">
-                                            <img src="https://yongvic.github.io/kya_text/img/acti4.avif?height=300&width=400" alt="Installation solaire" />
-                                            <div className="activity-overlay">
-                                                <div className="activity-icon">
-                                                    <i className="fas fa-play"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="activity-content">
-                                            <h3>Lancement de la fondation KYA</h3>
-                                            <p>Un engagement durable pour l’impact social et environnemental.</p>
-                                            <div className="activity-meta">
-                                                <span className="activity-date">
-                                                    <i className="fas fa-calendar"></i>
-                                                    2015
-                                                </span>
-                                                <span className="activity-location">
-                                                    <i className="fas fa-map-marker-alt"></i>
-                                                    Lomé, Togo
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="swiper-slide">
-                                    <div className="activity-card">
-                                        <div className="activity-image">
-                                            <img src="https://yongvic.github.io/kya_text/placeholder.svg?height=300&width=400" alt="Conférence éducation" />
-                                            <div className="activity-overlay">
-                                                <div className="activity-icon">
-                                                    <i className="fas fa-play"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="activity-content">
-                                            <h3>Conférence sur l&apos;éducation inclusive</h3>
-                                            <p>Sensibilisation sur l&apos;importance de l&apos;éducation des filles en sciences et technologies.</p>
-                                            <div className="activity-meta">
-                                                <span className="activity-date">
-                                                    <i className="fas fa-calendar"></i>
-                                                    Mars 2024
-                                                </span>
-                                                <span className="activity-location">
-                                                    <i className="fas fa-map-marker-alt"></i>
-                                                    Sokodé, Togo
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="swiper-slide">
-                                    <div className="activity-card">
-                                        <div className="activity-image">
-                                            <img src="https://yongvic.github.io/kya_text/img/acti3.avif?height=300&width=400" alt="Remise de bourses" />
-                                            <div className="activity-overlay">
-                                                <div className="activity-icon">
-                                                    <i className="fas fa-play"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="activity-content">
-                                            <h3>Remise de bourses d&apos;études</h3>
-                                            <p>Cérémonie de remise de bourses à 50 jeunes filles méritantes pour poursuivre leurs études supérieures.</p>
-                                            <div className="activity-meta">
-                                                <span className="activity-date">
-                                                    <i className="fas fa-calendar"></i>
-                                                    Février 2024
-                                                </span>
-                                                <span className="activity-location">
-                                                    <i className="fas fa-map-marker-alt"></i>
-                                                    Lomé, Togo
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="swiper-pagination"></div>
-                            <div className="swiper-button-next"></div>
-                            <div className="swiper-button-prev"></div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section className="support-cta">
-                <div className="cta-bg">
-                    <div className="cta-particles"></div>
-                </div>
-                <div className="container">
-                    <div className="cta-content" data-aos="zoom-in">
-                        <h2>Rejoignez notre mission</h2>
-                        <p>Ensemble, construisons un avenir durable pour l&apos;Afrique</p>
-                        <button className="support-btn" id="supportBtn">
-                            <div className="btn-bg"></div>
-                            <div className="btn-content">
-                                <i className="fas fa-heart"></i>
-                                <span>Soutenir les actions de la Fondation KYA</span>
-                            </div>
-                            <div className="btn-ripple"></div>
+                <motion.div
+                    className="relative z-10 container mx-auto px-4 text-center md:text-left max-w-4xl"
+                    initial="hidden"
+                    animate="visible"
+                    variants={staggerContainer}
+                >
+                    <motion.div variants={fadeInUp} className="inline-block bg-teal-500/20 border border-teal-500 text-teal-300 py-1 px-4 rounded-full text-sm mb-4">
+                        FONDATION KYA
+                    </motion.div>
+                    <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-extrabold uppercase tracking-wider">
+                        Nos <span className="text-teal-400">Initiatives</span>
+                    </motion.h1>
+                    <motion.div variants={fadeInUp} className="mt-6 max-w-2xl mx-auto md:mx-0 text-slate-200 text-lg leading-relaxed space-y-4">
+                        <p>
+                            La Fondation KYA est créée en <span className="font-bold text-orange-400">octobre 2022</span>.
+                            Elle a pour but de contribuer au développement socio-économique des populations africaines,
+                            issues des groupes les plus vulnérables par des interventions en faveur du développement
+                            en matière d&apos;<span className="font-bold text-green-400">énergie, d&apos;agriculture, de médecine, d&apos;éducation</span> et de l&apos;environnement.
+                        </p>
+                        <p className="flex items-center justify-center md:justify-start gap-2 font-semibold italic">
+                            <FaHeart className="text-red-500 animate-pulse" />
+                            <span>Fondation KYA, pour un monde meilleur.</span>
+                        </p>
+                    </motion.div>
+                    <motion.div variants={fadeInUp} className="mt-8">
+                        <button className="bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center gap-3 mx-auto md:mx-0 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                            <FaDownload />
+                            <span>Télécharger la lettre d&apos;engagement</span>
                         </button>
-                    </div>
-                </div>
+                    </motion.div>
+                </motion.div>
             </section>
 
-
-            <section className="sponsors-section">
-                <div className="container">
-                    <h2 className="section-title center" data-aos="fade-up">
-                        <span className="title-line">Nos</span>
-                        <span className="title-line highlight">Sponsors OR</span>
-                    </h2>
-
-                    <div className="sponsors-container" data-aos="fade-up" data-aos-delay="300">
-                        <div className="sponsors-grid">
-                            <div className="sponsor-card">
-                                <div className="sponsor-logo">
-                                    <img src="https://yongvic.github.io/kya_text/img/asecna.png?height=80&width=160" alt="Sponsor 1" />
+            {/* 2. Actions & Goals Section */}
+            <section className="py-20 bg-slate-50">
+                <div className="container mx-auto px-4">
+                    <motion.div
+                        className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
+                        {/* Means of Action Card */}
+                        <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="bg-teal-100 text-teal-600 p-4 rounded-full">
+                                    <FaRocket size={24} />
                                 </div>
-                                <div className="sponsor-glow"></div>
+                                <h2 className="text-2xl font-bold text-slate-800">Nos moyens d&apos;actions</h2>
                             </div>
-                            <div className="sponsor-card">
-                                <div className="sponsor-logo">
-                                    <img src="https://yongvic.github.io/kya_text/img/cetef.avif?height=80&width=160" alt="CETEF" />
-                                </div>
-                                <div className="sponsor-glow"></div>
-                            </div>
-                            <div className="sponsor-card">
-                                <div className="sponsor-logo">
-                                    <img src="https://yongvic.github.io/kya_text/img/onono.avif?height=80&width=160" alt="ONOMO" />
-                                </div>
-                                <div className="sponsor-glow"></div>
-                            </div>
-                            <div className="sponsor-card">
-                                <div className="sponsor-logo">
-                                    <img src="https://yongvic.github.io/kya_text/img/MOOV.avif?height=80&width=160" alt="Sponsor 4" />
-                                </div>
-                                <div className="sponsor-glow"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-
-            <section className="news-section">
-                <div className="container">
-                    <h2 className="section-title center" data-aos="fade-up">
-                        <span className="title-line">Nos dernières</span>
-                        <span className="title-line highlight">Actualités</span>
-                    </h2>
-
-                    <div className="news-grid">
-                        <article className="news-card" data-aos="fade-up" data-aos-delay="100">
-                            <div className="news-image">
-                                <img src="https://yongvic.github.io/kya_text/img/2fcfb1_6094c382ee544223a1d5904f89862906~mv2.avif?height=250&width=350" alt="Formation des jeunes filles" />
-                                <div className="news-overlay">
-                                    <div className="news-category">Formation</div>
-                                </div>
-                            </div>
-                            <div className="news-content">
-                                <div className="news-meta">
-                                    <span className="news-date">
-                                        <i className="fas fa-calendar"></i>
-                                        7 mai 2024
-                                    </span>
-                                    <span className="news-author">
-                                        <i className="fas fa-user"></i>
-                                        Fondation KYA
-                                    </span>
-                                </div>
-                                <h3 className="news-title">Formation des jeunes filles en solaire : la Fondation KYA</h3>
-                                <p className="news-excerpt">
-                                    Un programme innovant pour former les jeunes femmes aux technologies solaires
-                                    et promouvoir leur autonomisation économique.
-                                </p>
-                                <div className="news-stats">
-                                    <span><i className="fas fa-eye"></i> 74</span>
-                                    <span><i className="fas fa-comment"></i> 0</span>
-                                    <span><i className="fas fa-heart"></i> 12</span>
-                                </div>
-                                <a href="#" className="news-link">
-                                    Lire la suite
-                                    <i className="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </article>
-
-                        <article className="news-card" data-aos="fade-up" data-aos-delay="300">
-                            <div className="news-image">
-                                <img src="https://yongvic.github.io/kya_text/img/3191ca_33235050d9ff4df2a7bb29133111eda6~mv2.avif?height=250&width=350" alt="Réunion du Conseil" />
-                                <div className="news-overlay">
-                                    <div className="news-category">Gouvernance</div>
-                                </div>
-                            </div>
-                            <div className="news-content">
-                                <div className="news-meta">
-                                    <span className="news-date">
-                                        <i className="fas fa-calendar"></i>
-                                        24 mai 2024
-                                    </span>
-                                    <span className="news-author">
-                                        <i className="fas fa-user"></i>
-                                        Conseil d&apos;administration
-                                    </span>
-                                </div>
-                                <h3 className="news-title">Fondation KYA : Réunion du Conseil d&apos;administration</h3>
-                                <p className="news-excerpt">
-                                    Le conseil d&apos;administration se réunit pour définir les orientations stratégiques
-                                    et approuver les nouveaux projets de développement.
-                                </p>
-                                <div className="news-stats">
-                                    <span><i className="fas fa-eye"></i> 53</span>
-                                    <span><i className="fas fa-comment"></i> 2</span>
-                                    <span><i className="fas fa-heart"></i> 8</span>
-                                </div>
-                                <a href="#" className="news-link">
-                                    Lire la suite
-                                    <i className="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </article>
-
-                        <article className="news-card" data-aos="fade-up" data-aos-delay="500">
-                            <div className="news-image">
-                                <img src="https://yongvic.github.io/kya_text/img/3191ca_6ad0f10b94204d6e98884d78e6fe026a~mv2.avif?height=250&width=350" alt="Soutien renouvelé" />
-                                <div className="news-overlay">
-                                    <div className="news-category">Éducation</div>
-                                </div>
-                            </div>
-                            <div className="news-content">
-                                <div className="news-meta">
-                                    <span className="news-date">
-                                        <i className="fas fa-calendar"></i>
-                                        24 mai 2024
-                                    </span>
-                                    <span className="news-author">
-                                        <i className="fas fa-user"></i>
-                                        Équipe terrain
-                                    </span>
-                                </div>
-                                <h3 className="news-title">Un soutien renouvelé pour l&apos;éducation des filles</h3>
-                                <p className="news-excerpt">
-                                    Extension du programme de bourses d&apos;études pour permettre à plus de jeunes filles
-                                    d&apos;accéder à l&apos;enseignement supérieur en sciences et technologies.
-                                </p>
-                                <div className="news-stats">
-                                    <span><i className="fas fa-eye"></i> 44</span>
-                                    <span><i className="fas fa-comment"></i> 1</span>
-                                    <span><i className="fas fa-heart"></i> 15</span>
-                                </div>
-                                <a href="#" className="news-link">
-                                    Lire la suite
-                                    <i className="fas fa-arrow-right"></i>
-                                </a>
-                            </div>
-                        </article>
-                    </div>
-                </div>
-            </section>
-
-
-            <footer className="footer">
-                <div className="footer-bg">
-                    <div className="footer-pattern"></div>
-                </div>
-                <div className="container">
-                    <div className="footer-content">
-                        <div className="footer-section">
-                            <div className="footer-logo">
-                                <img src="https://yongvic.github.io/kya_text/placeholder.svg?height=40&width=100" alt="KYA ÉNERGIE GROUPE" />
-                                <p>Democratizing access to sustainable energy</p>
-                            </div>
-                            <div className="social-links">
-                                <a href="#" className="social-link">
-                                    <i className="fab fa-facebook"></i>
-                                    <div className="social-ripple"></div>
-                                </a>
-                                <a href="#" className="social-link">
-                                    <i className="fab fa-twitter"></i>
-                                    <div className="social-ripple"></div>
-                                </a>
-                                <a href="#" className="social-link">
-                                    <i className="fab fa-linkedin"></i>
-                                    <div className="social-ripple"></div>
-                                </a>
-                                <a href="#" className="social-link">
-                                    <i className="fab fa-instagram"></i>
-                                    <div className="social-ripple"></div>
-                                </a>
-                            </div>
-                        </div>
-                        <div className="footer-section">
-                            <h4>Navigation</h4>
-                            <ul>
-                                <li><a href="index.html">Home Page</a></li>
-                                <li><a href="products-services.html">Products & Services</a></li>
-                                <li><a href="our-team.html">Our Team</a></li>
-                                <li><a href="awards.html">Awards</a></li>
+                            <ul className="space-y-3 text-slate-600">
+                                {meansOfAction.map((action, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <FiChevronRight className="text-teal-500 mt-1 flex-shrink-0" />
+                                        <span>{action}</span>
+                                    </li>
+                                ))}
                             </ul>
-                        </div>
-                        <div className="footer-section">
-                            <h4>Company</h4>
-                            <ul>
-                                <li><a href="certification.html">Certification</a></li>
-                                <li><a href="news.html">News</a></li>
-                                <li><a href="kya-foundation.html">KYA Foundation</a></li>
-                                <li><a href="#contact">Contact</a></li>
+                        </motion.div>
+
+                        {/* Goals Card */}
+                        <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+                            <div className="flex items-center gap-4 mb-6">
+                                <div className="bg-orange-100 text-orange-600 p-4 rounded-full">
+                                    <FaBullseye size={24} />
+                                </div>
+                                <h2 className="text-2xl font-bold text-slate-800">Nos objectifs</h2>
+                            </div>
+                            <ul className="space-y-3 text-slate-600">
+                                {objectives.map((goal, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <FiChevronRight className="text-orange-500 mt-1 flex-shrink-0" />
+                                        <span>{goal}</span>
+                                    </li>
+                                ))}
                             </ul>
-                        </div>
-                        <div className="footer-section">
-                            <h4>Contact</h4>
-                            <div className="contact-info">
-                                <p><i className="fas fa-envelope"></i> contact@kya-energy.com</p>
-                                <p><i className="fas fa-phone"></i> +33 1 23 45 67 89</p>
-                                <p><i className="fas fa-map-marker-alt"></i> Paris, France</p>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* 3. Director Video Section (Placeholder - Add video logic if needed) */}
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-4">
+                    <motion.div
+                        className="text-center max-w-3xl mx-auto"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
+                        variants={staggerContainer}
+                    >
+                        <SectionTitle>
+                            Les domaines <Highlight>d&apos;intervention</Highlight>
+                        </SectionTitle>
+                        <motion.p variants={fadeInUp} className="mt-4 text-lg text-slate-500">
+                            Découvrez notre approche et notre vision à travers cette présentation vidéo.
+                        </motion.p>
+                    </motion.div>
+
+                    <motion.div
+                        variants={zoomIn}
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        className="mt-12 max-w-4xl mx-auto"
+                    >
+                        <div className="aspect-video bg-slate-900 rounded-xl shadow-2xl overflow-hidden relative group">
+                            <video
+                                className="w-full h-full object-cover"
+                                poster="/fond.png.jpg"
+                                src="/video_kya.mp4"
+                                controls
+                            />
+                            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-all pointer-events-none"></div>
+                            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-white opacity-100 group-hover:opacity-0 transition-opacity pointer-events-none">
+                                <FaPlay size={60} className="bg-black/50 rounded-full p-3" />
                             </div>
                         </div>
-                    </div>
-                    <div className="footer-bottom">
-                        <p>&copy; 2024 KYA ÉNERGIE GROUPE. All rights reserved.</p>
-                        <div className="footer-links">
-                            <a href="#">Privacy Policy</a>
-                            <a href="#">Terms of Service</a>
-                            <a href="#">Legal Notice</a>
-                        </div>
-                    </div>
+                    </motion.div>
                 </div>
-            </footer>
+            </section>
 
+            {/* 4. Intervention Domains */}
+            <section className="py-20 bg-slate-50">
+                <div className="container mx-auto px-4">
+                    <motion.div
+                        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.2 }}
+                        variants={staggerContainer}
+                    >
+                        {/* Education Card */}
+                        <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="bg-blue-100 text-blue-600 p-4 rounded-full"><FaGraduationCap size={28} /></div>
+                                <h3 className="text-xl font-bold text-slate-800">Éducation et formation</h3>
+                            </div>
+                            <p className="text-slate-600 flex-grow">L&apos;éducation est un droit fondamental... La fondation encourage la poursuite des études chez les filles talentueuses et octroie également des bourses d’études à celles qui sont vulnérables.</p>
+                            <div className="mt-6 pt-6 border-t border-slate-200">
+                                <StatCounter value={150} label="Bourses accordées" />
+                            </div>
+                        </motion.div>
 
+                        {/* Renewable Energy Card */}
+                        <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl shadow-lg flex flex-col">
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="bg-green-100 text-green-600 p-4 rounded-full"><FaSolarPanel size={28} /></div>
+                                <h3 className="text-xl font-bold text-slate-800">Énergies renouvelables</h3>
+                            </div>
+                            <p className="text-slate-600 flex-grow">L’énergie est importante pour le développement... Des formations gratuites sont également offertes aux filles en installation et maintenance des systèmes solaires photovoltaïques chaque année.</p>
+                            <div className="mt-6 pt-6 border-t border-slate-200">
+                                <StatCounter value={75} label="Installations solaires" />
+                            </div>
+                        </motion.div>
 
-            <Script src="/fondation-kya.js" />
+                        {/* Sustainable Development Card */}
+                        <motion.div variants={fadeInUp} className="bg-white p-8 rounded-xl shadow-lg md:col-span-2">
+                            <div className="flex items-center gap-4 mb-4">
+                                <div className="bg-yellow-100 text-yellow-600 p-4 rounded-full"><FaGlobeAfrica size={28} /></div>
+                                <h3 className="text-xl font-bold text-slate-800">Développement durable</h3>
+                            </div>
+                            <p className="text-slate-600 mb-6 max-w-4xl">Alignée sur les 17 Objectifs de Développement Durable de l&apos;ONU, la Fondation KYA se concentre sur 7 objectifs prioritaires pour transformer les communautés africaines.</p>
+                            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                                {sdgGoals.map(goal => (
+                                    <div key={goal.odd} className="bg-slate-100 p-3 rounded-lg text-center hover:bg-slate-200 transition-colors">
+                                        <div className="font-bold text-teal-600">{goal.odd}</div>
+                                        <p className="text-xs text-slate-600 mt-1">{goal.text}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* 5. Activities Section (Grid instead of Carousel) */}
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center max-w-3xl mx-auto">
+                        <SectionTitle>Quelques images <Highlight>de nos activités</Highlight></SectionTitle>
+                    </div>
+                    <motion.div
+                        className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-12"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                        variants={staggerContainer}
+                    >
+                        {activities.map((activity, i) => (
+                            <motion.div key={i} variants={fadeInUp} className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 group">
+                                <div className="relative">
+                                    <img src={activity.img} alt={activity.title} className="w-full h-48 object-cover" />
+                                    <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 flex items-center justify-center transition-all">
+                                        <div className="w-14 h-14 bg-white/20 rounded-full flex items-center justify-center backdrop-blur-sm transform scale-0 group-hover:scale-100 transition-transform">
+                                            <FaPlay className="text-white" size={24} />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="p-5">
+                                    <h3 className="font-bold text-slate-800 mb-2">{activity.title}</h3>
+                                    <p className="text-sm text-slate-600 mb-4">{activity.desc}</p>
+                                    <div className="text-xs text-slate-500 flex items-center justify-between">
+                                        <span className="flex items-center gap-1.5"><FaCalendar /> {activity.date}</span>
+                                        <span className="flex items-center gap-1.5"><FaMapMarkerAlt /> {activity.location}</span>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* 6. Support CTA */}
+            <section className="py-20 bg-slate-800 text-white">
+                <div className="container mx-auto px-4 text-center">
+                    <motion.div
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.5 }}
+                        variants={staggerContainer}
+                    >
+                        <motion.h2 variants={fadeInUp} className="text-3xl md:text-4xl font-bold">Rejoignez notre mission</motion.h2>
+                        <motion.p variants={fadeInUp} className="mt-3 text-lg text-slate-300">Ensemble, construisons un avenir durable pour l&apos;Afrique</motion.p>
+                        <motion.div variants={fadeInUp} className="mt-8">
+                            <button className="bg-teal-500 hover:bg-teal-400 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 flex items-center gap-3 mx-auto shadow-lg hover:shadow-teal-500/40 transform hover:scale-105">
+                                <FaHeart />
+                                <span>Soutenir les actions de la Fondation KYA</span>
+                            </button>
+                        </motion.div>
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* 7. Sponsors Section */}
+            <section className="py-16 bg-slate-50">
+                <div className="container mx-auto px-4">
+                    <div className="text-center max-w-3xl mx-auto">
+                        <SectionTitle>Nos <Highlight>Sponsors OR</Highlight></SectionTitle>
+                    </div>
+                    <motion.div
+                        className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-8 items-center"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.3 }}
+                        variants={staggerContainer}
+                    >
+                        {sponsors.map((sponsor, i) => (
+                            <motion.div key={i} variants={fadeInUp} className="flex justify-center">
+                                <img src={sponsor.src} alt={sponsor.alt} className="h-16 object-contain grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-300" />
+                            </motion.div>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
+
+            {/* 8. News Section */}
+            <section className="py-20 bg-white">
+                <div className="container mx-auto px-4">
+                    <div className="text-center max-w-3xl mx-auto">
+                        <SectionTitle>Nos dernières <Highlight>Actualités</Highlight></SectionTitle>
+                    </div>
+                    <motion.div
+                        className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+                        initial="hidden"
+                        whileInView="visible"
+                        viewport={{ once: true, amount: 0.1 }}
+                        variants={staggerContainer}
+                    >
+                        {newsItems.map((item, i) => (
+                            <motion.article key={i} variants={fadeInUp} className="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 border border-slate-100 flex flex-col">
+                                <div className="relative">
+                                    <img src={item.img} alt={item.title} className="w-full h-56 object-cover" />
+                                    <span className="absolute top-4 left-4 bg-teal-500 text-white text-xs font-bold py-1 px-3 rounded-full">{item.category}</span>
+                                </div>
+                                <div className="p-6 flex flex-col flex-grow">
+                                    <div className="text-xs text-slate-500 mb-3 flex items-center gap-4">
+                                        <span className="flex items-center gap-1.5"><FaCalendar /> {item.date}</span>
+                                        <span className="flex items-center gap-1.5"><FaUser /> {item.author}</span>
+                                    </div>
+                                    <h3 className="text-lg font-bold text-slate-800 mb-2 flex-grow">{item.title}</h3>
+                                    <p className="text-sm text-slate-600 mb-4">{item.excerpt}</p>
+                                    <div className="mt-auto pt-4 border-t border-slate-200 flex justify-between items-center">
+                                        <div className="flex items-center gap-4 text-sm text-slate-500">
+                                            <span className="flex items-center gap-1"><FaEye /> {item.views}</span>
+                                            <span className="flex items-center gap-1"><FaComment /> {item.comments}</span>
+                                            <span className="flex items-center gap-1"><FaHeart /> {item.likes}</span>
+                                        </div>
+                                        <a href="#" className="font-semibold text-teal-600 hover:text-teal-700 text-sm flex items-center gap-1 group">
+                                            Lire la suite
+                                            <FaArrowRight className="transform transition-transform group-hover:translate-x-1" />
+                                        </a>
+                                    </div>
+                                </div>
+                            </motion.article>
+                        ))}
+                    </motion.div>
+                </div>
+            </section>
         </>
     );
 }
