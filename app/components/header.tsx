@@ -29,7 +29,7 @@ export default function Header() {
                                     ["Notre équipe", "/notre-equipe"],
                                     ["Récompenses", "/recompenses"],
                                     ["Certifications", "/certifications"],
-                                    ["Actualités", "/actualites"],
+                                    // ["Actualités", "/actualites"],
                                     ["Fondation KYA", "/fondation-kya"]
                                 ].map((value, index) => (
                                     <li key={index} className="w-max">
