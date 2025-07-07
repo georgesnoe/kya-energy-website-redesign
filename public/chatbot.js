@@ -162,8 +162,8 @@ function addMessage(text, type = 'user') {
     messageDiv.className = `message ${type}`;
     messageDiv.innerHTML = text;
 
-    let texte = messageDiv.innerHTML;
-    messageDiv.innerHTML = texte.replace("https://www.kya-energy.com/", '<a href="https://www.kya-energy.com/">Site web de Kya Energy Group</a>')
+    // let texte = messageDiv.innerHTML;
+    // messageDiv.innerHTML = texte.replace("https://www.kya-energy.com/", '<a href="https://www.kya-energy.com/">Site web de Kya Energy Group</a>')
 
     for (const pElement of messageDiv.children) {
         for (const element of pElement.children) {
