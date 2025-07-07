@@ -1,6 +1,6 @@
 // /app/your-page-directory/page.tsx
 
-// "use client";
+"use client";
 
 import { useEffect } from "react";
 import Link from "next/link";
@@ -9,7 +9,6 @@ import { useAnimate, useInView, stagger, motion } from "motion/react";
 // Icons
 import { FaCalendarAlt, FaDownload, FaGlobeAfrica, FaHandshake, FaLeaf, FaLightbulb, FaPlay, FaRocket, FaTrophy } from "react-icons/fa";
 import { FaEarthAfrica, FaPeopleGroup } from "react-icons/fa6";
-import { Metadata } from "next";
 
 export default function Page() {
     // --- Animation Hooks ---
@@ -23,6 +22,11 @@ export default function Page() {
     const isImpactInView = useInView(impactScope, { once: true, amount: 0.2 });
     const isCategoriesInView = useInView(categoriesScope, { once: true, amount: 0.1 });
     const isCtaInView = useInView(ctaScope, { once: true, amount: 0.4 });
+
+    // Change title
+    useEffect(() => {
+        document.title = "Récompenses - KYA Energy Group";
+    }, []);
 
     // --- Animation Effects ---
     useEffect(() => {
@@ -227,8 +231,4 @@ export default function Page() {
             </div>
         </>
     );
-}
-
-export const metadata: Metadata = {
-    title: "Récompenses - Kya Energy Group"
 }

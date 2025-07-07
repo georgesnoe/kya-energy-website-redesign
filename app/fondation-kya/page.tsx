@@ -1,6 +1,6 @@
 // /app/page.tsx
 
-// "use client";
+"use client";
 
 import React, { useEffect, useRef } from 'react';
 import { motion, Variants, useMotionValue, useTransform, animate } from 'framer-motion';
@@ -10,7 +10,6 @@ import {
     FaComment, FaArrowRight, FaUser
 } from 'react-icons/fa';
 import { FiChevronRight } from 'react-icons/fi';
-import { Metadata } from 'next';
 
 // --- Framer Motion Animation Variants ---
 const fadeInUp: Variants = {
@@ -144,6 +143,11 @@ export default function KyaFoundationPage() {
         { src: "/onono.avif", alt: "ONOMO" },
         { src: "/MOOV.avif", alt: "MOOV" },
     ];
+
+    // Change title
+    useEffect(() => {
+        document.title = "Fondation KYA - KYA Energy Group";
+    }, []);
 
     return (
         // Wrap everything in a React.Fragment as we are not providing a single root element like <main>
@@ -458,8 +462,4 @@ export default function KyaFoundationPage() {
             </section>
         </>
     );
-}
-
-export const metadata: Metadata = {
-    title: "Fondation KYA - Kya Energy Group"
 }

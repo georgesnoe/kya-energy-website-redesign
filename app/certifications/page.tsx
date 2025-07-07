@@ -1,6 +1,6 @@
 // /app/your-page-directory/page.tsx
 
-// "use client";
+"use client";
 
 import { useEffect } from "react";
 import Link from "next/link";
@@ -10,7 +10,6 @@ import { useAnimate, useInView, stagger } from "motion/react";
 import { FaAward, FaChartLine, FaDownload, FaHandshake, FaLeaf } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 import { HiAcademicCap } from "react-icons/hi2";
-import { Metadata } from "next";
 
 export default function Page() {
     // --- Animation Hooks ---
@@ -29,6 +28,11 @@ export default function Page() {
     const isThanksInView = useInView(thanksScope, { once: true, amount: 0.4 });
     const isDetailsInView = useInView(detailsScope, { once: true, amount: 0.2 });
     const isCtaInView = useInView(ctaScope, { once: true, amount: 0.4 });
+
+    // Change title
+    useEffect(() => {
+        document.title = "Certifications - KYA Energy Group";
+    }, []);
 
     // --- Animation Effects ---
     useEffect(() => {
@@ -197,8 +201,4 @@ export default function Page() {
             </div>
         </>
     );
-}
-
-export const metadata: Metadata = {
-    title: "Certifications - Kya Energy Group"
 }

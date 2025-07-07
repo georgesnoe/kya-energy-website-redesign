@@ -169,9 +169,9 @@ function addMessage(text, type = 'user') {
         for (const element of pElement.children) {
             if (element.nodeName == "A") {
                 element.target = "_blank";
-                if (element.href == "https://www.google.com/maps/place/KYA-%C3%89nergy+GROUP/@6.2414044,1.182018,760m/data=!3m2!1e3!4b1!4m6!3m5!1s0x10215783b880a173:0xe90f181e8b59c8fc!8m2!3d6.2413991!4d1.1845929!16s%2Fg%2F11gxrmkw1n?entry=ttu&g_ep=EgoyMDI1MD611.0IKXMDSoASAFQAw%3D%3D") {
+                if (element.href.contains("maps/place/KYA")) {
                     element.textContent = "Lien Google Maps"
-                } else if (element.href == "https://kya-energy.com/") {
+                } else if (element.href.contains("https://kya-energy.com")) {
                     element.textContent = "Site web de Kya Energy Group"
                 }
             }

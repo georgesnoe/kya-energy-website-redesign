@@ -1,6 +1,6 @@
 // /app/your-page-directory/page.tsx
 
-// "use client";
+"use client";
 
 import { useEffect } from "react";
 import Link from "next/link";
@@ -13,7 +13,6 @@ import {
     RiCoinsLine, RiFlashlightLine, RiGroupLine, RiHome3Line,
     RiPhoneLine, RiShieldLine, RiStarFill
 } from "react-icons/ri";
-import { Metadata } from "next";
 
 export default function Page() {
     // --- Animation Hooks ---
@@ -25,6 +24,11 @@ export default function Page() {
     const isProductsInView = useInView(productsScope, { once: true, amount: 0.1 });
     const isServicesInView = useInView(servicesScope, { once: true, amount: 0.2 });
     const isFinancingInView = useInView(financingScope, { once: true, amount: 0.2 });
+
+    // Change title
+    useEffect(() => {
+        document.title = "Produits et Services - KYA Energy Group";
+    }, []);
 
     // --- Animation Effects ---
 
@@ -239,8 +243,4 @@ export default function Page() {
             </div>
         </>
     );
-}
-
-export const metadata: Metadata = {
-    title: "Produits et Services - Kya Energy Group"
 }

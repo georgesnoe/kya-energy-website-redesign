@@ -1,6 +1,6 @@
 // /app/page.tsx or your relevant page file
 
-// "use client";
+"use client";
 
 import { useEffect } from "react";
 import Link from "next/link";
@@ -11,7 +11,6 @@ import { useAnimate, useInView, stagger } from "motion/react";
 import { LuLeaf, LuCircleCheckBig, LuArrowRight } from "react-icons/lu";
 import { HiUserGroup, HiGlobeAlt } from "react-icons/hi2";
 import { RiLeafLine, RiAwardLine, RiFlashlightLine, RiShieldLine, RiGroupLine, RiGlobeLine } from "react-icons/ri";
-import { Metadata } from "next";
 
 
 export default function Home() {
@@ -40,6 +39,11 @@ export default function Home() {
   // Hook for Contact Section
   const [contactScope, animateContact] = useAnimate();
   const isContactInView = useInView(contactScope, { once: true, amount: 0.2 });
+
+  // Change title
+  useEffect(() => {
+    document.title = "Acceuil - KYA Energy Group";
+  }, []);
 
   // --- Animation Effects ---
 
@@ -321,8 +325,4 @@ export default function Home() {
       </div>
     </div>
   );
-}
-
-export const metadata: Metadata = {
-  title: "Acceuil - Kya Energy Group"
 }

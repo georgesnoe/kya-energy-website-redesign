@@ -1,6 +1,6 @@
 // /app/your-page-directory/page.tsx
 
-// "use client";
+"use client";
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
@@ -11,7 +11,6 @@ import { FaGlobeAfrica, FaLeaf, FaSolarPanel } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
 import { LuAward, LuCrown, LuGlobe, LuGroup, LuLeaf, LuLightbulb, LuRocket, LuScale, LuSchool, LuShield, LuTabletSmartphone, LuTrophy } from "react-icons/lu";
 import { RiArrowLeftLine, RiArrowRightLine, RiOrganizationChart, RiShakeHandsLine } from "react-icons/ri";
-import { Metadata } from "next";
 
 export default function Page() {
     // --- Carousel State ---
@@ -89,6 +88,11 @@ export default function Page() {
     }, [isImpactInView, animateImpact]);
 
     useEffect(() => { if (isCtaInView) animateCta("h1, div", { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, delay: stagger(0.2) }) }, [isCtaInView, animateCta]);
+
+    // Change title
+    useEffect(() => {
+        document.title = "Notre équipe - KYA Energy Group";
+    }, []);
 
     return (
         <>
@@ -321,8 +325,4 @@ export default function Page() {
             </div>
         </>
     );
-}
-
-export const metadata: Metadata = {
-    title: "Notre équipe - Kya Energy Group"
 }
