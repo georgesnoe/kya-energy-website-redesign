@@ -1,6 +1,6 @@
 // /app/page.tsx
 
-"use client";
+// "use client";
 
 import React, { useEffect, useRef } from 'react';
 import { motion, Variants, useMotionValue, useTransform, animate } from 'framer-motion';

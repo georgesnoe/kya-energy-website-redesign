@@ -1,6 +1,6 @@
 // /app/your-page-directory/page.tsx
 
-"use client";
+// "use client";
 
 import { useEffect } from "react";
 import Link from "next/link";
