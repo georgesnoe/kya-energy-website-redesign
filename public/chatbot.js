@@ -169,9 +169,9 @@ function addMessage(text, type = 'user') {
         for (const element of pElement.children) {
             if (element.nodeName == "A") {
                 element.target = "_blank";
-                if (element.href.contains("maps/place/KYA")) {
+                if (element.href.search("maps/place/KYA") > 0) {
                     element.textContent = "Lien Google Maps"
-                } else if (element.href.contains("https://kya-energy.com")) {
+                } else if (element.href.search("https://kya-energy.com") > 0) {
                     element.textContent = "Site web de Kya Energy Group"
                 }
             }
