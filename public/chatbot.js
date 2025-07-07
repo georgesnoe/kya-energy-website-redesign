@@ -171,7 +171,7 @@ function addMessage(text, type = 'user') {
                 element.target = "_blank";
                 if (element.href.search("maps/place/KYA") > 0) {
                     element.textContent = "Lien Google Maps"
-                } else if (element.href.search("https://kya-energy.com") > 0) {
+                } else if (element.href.search("ttps://kya-energy.com") > 0) {
                     element.textContent = "Site web de Kya Energy Group"
                 }
             }
