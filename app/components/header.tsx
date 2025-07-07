@@ -41,13 +41,13 @@ export default function Header() {
                                 ))
                             }
                             <li className="w-max xl:hidden">
-                                <Link href="/politique-qualite"
+                                <Link href="/politique_qualité_kya.pdf"
                                     className="hover:text-green-500">
                                     Politique qualité
                                 </Link>
                             </li>
                             <li className="w-max xl:hidden">
-                                <Link href="#contact"
+                                <Link href="/#contact"
                                     className="hover:text-green-500">
                                     Contact
                                 </Link>
