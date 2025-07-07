@@ -3,7 +3,7 @@
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { useState } from "react";
-import { LuMenu } from "react-icons/lu";
+import { LuCross, LuMenu } from "react-icons/lu";
 
 export default function Header() {
     const pathname = usePathname();
@@ -63,7 +63,7 @@ export default function Header() {
                     {/* Bouton hamburger */}
                     <div className="xl:hidden flex items-center">
                         <button onClick={() => { setShowMenu(!showMenu); document.getElementById(pathname.slice(1))?.focus() }}>
-                            <LuMenu size={48} />
+                            {showMenu == true ? (<LuMenu size={48} />) : (<LuCross size={48} />)}
                         </button>
                     </div>
                 </div>
