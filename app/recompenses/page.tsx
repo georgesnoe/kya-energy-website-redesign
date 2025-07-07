@@ -9,6 +9,7 @@ import { useAnimate, useInView, stagger, motion } from "motion/react";
 // Icons
 import { FaCalendarAlt, FaDownload, FaGlobeAfrica, FaHandshake, FaLeaf, FaLightbulb, FaPlay, FaRocket, FaTrophy } from "react-icons/fa";
 import { FaEarthAfrica, FaPeopleGroup } from "react-icons/fa6";
+import { Metadata } from "next";
 
 export default function Page() {
     // --- Animation Hooks ---
@@ -226,4 +227,8 @@ export default function Page() {
             </div>
         </>
     );
+}
+
+export const metadata: Metadata = {
+    title: "Récompenses - Kya Energy Group"
 }

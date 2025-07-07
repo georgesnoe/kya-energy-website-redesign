@@ -10,6 +10,7 @@ import {
     FaComment, FaArrowRight, FaUser
 } from 'react-icons/fa';
 import { FiChevronRight } from 'react-icons/fi';
+import { Metadata } from 'next';
 
 // --- Framer Motion Animation Variants ---
 const fadeInUp: Variants = {
@@ -457,4 +458,8 @@ export default function KyaFoundationPage() {
             </section>
         </>
     );
+}
+
+export const metadata: Metadata = {
+    title: "Fondation KYA - Kya Energy Group"
 }

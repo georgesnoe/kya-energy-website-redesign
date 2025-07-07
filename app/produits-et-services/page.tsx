@@ -13,6 +13,7 @@ import {
     RiCoinsLine, RiFlashlightLine, RiGroupLine, RiHome3Line,
     RiPhoneLine, RiShieldLine, RiStarFill
 } from "react-icons/ri";
+import { Metadata } from "next";
 
 export default function Page() {
     // --- Animation Hooks ---
@@ -238,4 +239,8 @@ export default function Page() {
             </div>
         </>
     );
+}
+
+export const metadata: Metadata = {
+    title: "Produits et Services - Kya Energy Group"
 }

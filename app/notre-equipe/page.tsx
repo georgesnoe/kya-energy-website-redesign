@@ -11,6 +11,7 @@ import { FaGlobeAfrica, FaLeaf, FaSolarPanel } from "react-icons/fa";
 import { FaHouse } from "react-icons/fa6";
 import { LuAward, LuCrown, LuGlobe, LuGroup, LuLeaf, LuLightbulb, LuRocket, LuScale, LuSchool, LuShield, LuTabletSmartphone, LuTrophy } from "react-icons/lu";
 import { RiArrowLeftLine, RiArrowRightLine, RiOrganizationChart, RiShakeHandsLine } from "react-icons/ri";
+import { Metadata } from "next";
 
 export default function Page() {
     // --- Carousel State ---
@@ -320,4 +321,8 @@ export default function Page() {
             </div>
         </>
     );
+}
+
+export const metadata: Metadata = {
+    title: "Notre équipe - Kya Energy Group"
 }

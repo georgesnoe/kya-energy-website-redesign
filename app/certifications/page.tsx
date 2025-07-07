@@ -10,6 +10,7 @@ import { useAnimate, useInView, stagger } from "motion/react";
 import { FaAward, FaChartLine, FaDownload, FaHandshake, FaLeaf } from "react-icons/fa";
 import { FaUserGroup } from "react-icons/fa6";
 import { HiAcademicCap } from "react-icons/hi2";
+import { Metadata } from "next";
 
 export default function Page() {
     // --- Animation Hooks ---
@@ -196,4 +197,8 @@ export default function Page() {
             </div>
         </>
     );
+}
+
+export const metadata: Metadata = {
+    title: "Certifications - Kya Energy Group"
 }
