@@ -405,7 +405,7 @@ export default function KyaFoundationPage() {
                     >
                         {sponsors.map((sponsor, i) => (
                             <motion.div key={i} variants={fadeInUp} className="flex justify-center">
-                                <img src={sponsor.src} alt={sponsor.alt} className="h-16 object-contain opacity-60 hover:grayscale hover:opacity-100 transition-all duration-300" />
+                                <img src={sponsor.src} alt={sponsor.alt} className="h-16 object-contain opacity-60 hover:opacity-100 transition-all duration-300" />
                             </motion.div>
                         ))}
                     </motion.div>
