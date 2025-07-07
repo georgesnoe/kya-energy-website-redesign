@@ -524,6 +524,7 @@
 
 /* Notification d'enregistrement vocal */
 .voice-notification {
+    display: none;
     position: absolute;
     bottom: 70px;
     left: 16px;
@@ -542,6 +543,7 @@
 }
 
 .voice-notification.show {
+    display: block;
     transform: translateY(0);
     opacity: 1;
 }
